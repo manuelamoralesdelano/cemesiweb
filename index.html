@@ -118,7 +118,14 @@
     margin: 0;
     letter-spacing: -0.5px;
   }
-
+  
+  /* Design Line */
+  .design-line {
+    height: 4px;
+    width: 100%;
+    /* Gradient matching the brand colors */
+    background: linear-gradient(to right, #3b87b7, #5854a8); 
+  }
   /* Footer */
   footer {
     display: flex;
@@ -226,11 +233,11 @@
 <body>
   <header>
     <div class="header-left">
-      <a href="/" class="logo-container" aria-label="CEMESI Inicio">
+      <a href="index.html" class="logo-container" aria-label="CEMESI Inicio">
         <img src="https://i.imgur.com/eGYgKwb.jpg" alt="Logo CEMESI" class="logo-img">
       </a>
       <nav class="main-nav">
-        <a href="servicios" data-translate="servicios">Servicios</a>
+        <a href="servicios.html" data-translate="servicios">Servicios</a>
         <a href="#" data-translate="nosotros">Nosotros</a>
         <a href="#" data-translate="laboratorio">Laboratorio</a>
         <a href="#" data-translate="convenios">Convenios</a>
