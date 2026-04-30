@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Convenios institucionales en CEMESI. Conoce nuestras alianzas estratégicas en Providencia, Chile.">
+<meta name="keywords" content="CEMESI, convenios, alianzas, salud, Providencia, Chile, Banmédica, Fonasa, Colmena, VidaTres">
+<title>Convenios - CEMESI</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #000;
+  }
+  
+  /* Header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    height: 90px;
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: flex-end;
+    gap: 60px;
+    height: 100%;
+    padding-bottom: 5px;
+  }
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+  
+  .logo-img {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 0px;
+    position: relative;
+    top: 5px; 
+  }
+  /* Navigation */
+  nav.main-nav {
+    display: flex;
+    gap: 85px;
+    align-items: center;
+    position: relative;
+    top: -5px;
+  }
+  nav.main-nav a {
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+    padding-bottom: 2px;
+    transition: text-shadow 0.3s ease;
+  }
+  nav.main-nav a:hover, nav.main-nav a.active-link {
+    text-shadow: 0.5px 0 0 currentcolor, -0.5px 0 0 currentcolor;
+  }
+  
+  .lang-switch {
+    font-size: 15px;
+    font-weight: normal; 
+    padding-bottom: 5px;
+    align-self: flex-end;
+  }
+  .lang-switch span {
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .lang-switch span:hover {
+    color: #555;
+  }
+  .lang-switch span.active-lang {
+    font-weight: normal; 
+    text-decoration: underline;
+  }
+  
+  /* Main Content */
+  .hero.convenios-page {
+    flex-grow: 1;
+    background-image: url('https://i.imgur.com/utSPpvj.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex; 
+  }
+  
+  .convenios-overlay {
+    flex-grow: 1;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.85);
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding: 60px 40px;
+  }
+  .convenios-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 70px 90px;
+    max-width: 1100px;
+    width: 100%;
+    animation: fadeIn 0.8s ease forwards;
+  }
+  .convenio-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    width: 250px;
+  }
+  
+  .convenio-link:hover {
+    transform: scale(1.08);
+  }
+  .convenio-logo {
+    max-width: 100%;
+    height: auto;
+    max-height: 80px;
+    object-fit: contain;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  /* Design Line */
+  .design-line {
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(to right, #3b87b7, #5854a8); 
+  }
+  /* Footer */
+  footer {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px 40px;
+    background-color: #fff;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  
+  .footer-qr {
+    width: 70px;
+    height: 70px;
+    margin-right: 25px;
+    flex-shrink: 0;
+  }
+  
+  .footer-col {
+    margin-right: 60px;
+  }
+  .contact-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #000;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .contact-item a {
+    color: #000;
+    text-decoration: none;
+    transition: text-decoration 0.2s;
+  }
+  .contact-item a:hover {
+    text-decoration: underline;
+  }
+  .address-col a {
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .address-col a:hover {
+    color: #555;
+    text-decoration: underline;
+  }
+  /* Map Modal */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    display: none; /* Flex when active */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .modal-overlay.active {
+    display: flex;
+    opacity: 1;
+  }
+  .modal-content {
+    background: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    width: 80%;
+    max-width: 800px;
+    height: 70%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .modal-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 1;
+  }
+  .modal-close:hover {
+    color: #ddd;
+  }
+  .modal-content iframe {
+    flex-grow: 1;
+    border: none;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <a href="index.html" class="logo-container" aria-label="CEMESI Inicio">
+        <img src="https://i.imgur.com/eGYgKwb.jpg" alt="Logo CEMESI" class="logo-img">
+      </a>
+      <nav class="main-nav">
+        <a href="servicios.html" data-translate="servicios">Servicios</a>
+        <a href="index.html" data-translate="nosotros">Nosotros</a>
+        <a href="index.html" data-translate="laboratorio">Laboratorio</a>
+        <a href="convenios.html" class="active-link" data-translate="convenios">Convenios</a>
+      </nav>
+    </div>
+    <div class="lang-switch">
+      <span id="lang-es" class="active-lang">ESP</span> / <span id="lang-en">ENG</span>
+    </div>
+  </header>
+  <main class="hero convenios-page">
+    <div class="convenios-overlay">
+      <div class="convenios-grid">
+        <a href="#" class="convenio-link" aria-label="Banmédica">
+          <img src="https://i.imgur.com/ayFDn8l.png" class="convenio-logo" alt="Logotipo Banmédica">
+        </a>
+        <a href="#" class="convenio-link" aria-label="IntegraMédica">
+          <img src="https://i.imgur.com/T1aKwxy.png" class="convenio-logo" alt="Logotipo IntegraMédica">
+        </a>
+        <a href="#" class="convenio-link" aria-label="Fonasa">
+          <img src="https://i.imgur.com/FjfbKiX.png" class="convenio-logo" alt="Logotipo Fonasa">
+        </a>
+        <a href="#" class="convenio-link" aria-label="Consalud">
+          <img src="https://i.imgur.com/bNFSZZY.png" class="convenio-logo" alt="Logotipo Consalud">
+        </a>
+        <a href="#" class="convenio-link" aria-label="Colmena">
+          <img src="https://i.imgur.com/zeeRR4s.png" class="convenio-logo" alt="Logotipo Colmena">
+        </a>
+        <a href="#" class="convenio-link" aria-label="Nueva Masvida">
+          <img src="https://i.imgur.com/2kA7nAy.png" class="convenio-logo" alt="Logotipo Nueva Masvida">
+        </a>
+        <a href="#" class="convenio-link" aria-label="CruzBlanca">
+          <img src="https://i.imgur.com/fcbkx2B.png" class="convenio-logo" alt="Logotipo CruzBlanca">
+        </a>
+        <a href="#" class="convenio-link" aria-label="VidaTres">
+          <img src="https://i.imgur.com/v6qkzDT.png" class="convenio-logo" alt="Logotipo VidaTres">
+        </a>
+      </div>
+    </div>
+  </main>
+  
+  <div class="design-line"></div>
+  <footer>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://cemesi.cl" alt="QR Code CEMESI" class="footer-qr">
+    <div class="footer-col address-col">
+      <a id="address-link" title="Guardia Vieja 339, Providencia, Chile">
+        Guardia Vieja 339,<br>
+        7510249 Providencia,<br>
+        Región Metropolitana,<br>
+        Chile
+      </a>
+    </div>
+    <div class="footer-col" style="color: #000;">
+      <span data-translate="horarios">Horarios</span><br>
+      <span data-translate="dias">Lunes a Viernes</span><br>
+      09.00-18.00
+    </div>
+    <div class="footer-col contact-col">
+      <div class="contact-item">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        <a href="tel:+56222075895">+56 222 07 58 95</a>
+      </div>
+      <div class="contact-item">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        <a href="mailto:secretaria@cemesi.cl">secretaria@cemesi.cl</a>
+      </div>
+    </div>
+  </footer>
+  <div class="modal-overlay" id="mapModal">
+    <div class="modal-content">
+      <span class="modal-close" id="closeMap">&times;</span>
+      <iframe src="https://maps.google.com/maps?q=Guardia+Vieja+339,+Providencia,+Chile&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Mapa de ubicación CEMESI"></iframe>
+    </div>
+  </div>
+  <script>
+    const generalTranslations = {
+      es: {
+        servicios: "Servicios",
+        nosotros: "Nosotros",
+        laboratorio: "Laboratorio",
+        convenios: "Convenios",
+        horarios: "Horarios",
+        dias: "Lunes a Viernes"
+      },
+      en: {
+        servicios: "Services",
+        nosotros: "About Us",
+        laboratorio: "Laboratory",
+        convenios: "Agreements",
+        horarios: "Business Hours",
+        dias: "Monday to Friday"
+      }
+    };
+    let currentLang = 'es';
+    const btnEs = document.getElementById('lang-es');
+    const btnEn = document.getElementById('lang-en');
+    function setLang(lang) {
+      currentLang = lang;
+      
+      if (lang === 'es') {
+        btnEs.classList.add('active-lang');
+        btnEn.classList.remove('active-lang');
+      } else {
+        btnEn.classList.add('active-lang');
+        btnEs.classList.remove('active-lang');
+      }
+      document.querySelectorAll('[data-translate]').forEach(el => {
+        const key = el.getAttribute('data-translate');
+        if (generalTranslations[lang] && generalTranslations[lang][key]) {
+          el.textContent = generalTranslations[lang][key];
+        }
+      });
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      btnEs.addEventListener('click', () => setLang('es'));
+      btnEn.addEventListener('click', () => setLang('en'));
+      // Map behavior (mirroring index)
+      const addressLink = document.getElementById('address-link');
+      const mapModal = document.getElementById('mapModal');
+      const closeMap = document.getElementById('closeMap');
+      if (addressLink) {
+        addressLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          mapModal.classList.add('active');
+        });
+      }
+      if (closeMap) {
+        closeMap.addEventListener('click', () => {
+          mapModal.classList.remove('active');
+        });
+      }
+      if (mapModal) {
+        mapModal.addEventListener('click', (e) => {
+          if (e.target === mapModal) {
+            mapModal.classList.remove('active');
+          }
+        });
+      }
+      
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mapModal && mapModal.classList.contains('active')) {
+          mapModal.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
