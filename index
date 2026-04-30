@@ -115,11 +115,11 @@
   }
   
   .hero-banner h1 {
-    font-weight: 400;
-    font-size: 50px; /* Slightly reduced to fit longer text nicely */
+    font-weight: 250;
+    font-size: 35px; /* Slightly reduced to fit longer text nicely */
     color: #6a6a6a;
     margin: 0;
-    letter-spacing: -0.5px;
+    letter-spacing: auto;
   }
 
   /* Footer */
