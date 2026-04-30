@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Servicios clínicos de excelencia en CEMESI. Laboratorio, histopatología, citología, biología molecular y regenerativa. Providencia, Chile.">
+<meta name="keywords" content="CEMESI, servicios médicos, histopatología, biología molecular, citología, criopreservación, Providencia, Chile">
+<title>Servicios - CEMESI</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #000;
+  }
+  
+  /* Header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    height: 90px;
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: flex-end;
+    gap: 60px;
+    height: 100%;
+    padding-bottom: 5px;
+  }
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+  
+  .logo-img {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 0px;
+    position: relative;
+    top: 5px; 
+  }
+  /* Navigation */
+  nav.main-nav {
+    display: flex;
+    gap: 85px;
+    align-items: center;
+    position: relative;
+    top: -5px;
+  }
+  nav.main-nav a {
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+    padding-bottom: 2px;
+    transition: text-shadow 0.3s ease;
+  }
+  nav.main-nav a:hover, nav.main-nav a.active-link {
+    text-shadow: 0.5px 0 0 currentcolor, -0.5px 0 0 currentcolor;
+  }
+  
+  .lang-switch {
+    font-size: 15px;
+    font-weight: normal; 
+    padding-bottom: 5px;
+    align-self: flex-end;
+  }
+  .lang-switch span {
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .lang-switch span:hover {
+    color: #555;
+  }
+  .lang-switch span.active-lang {
+    font-weight: normal; 
+    text-decoration: underline;
+  }
+  
+  /* Main Content */
+  .hero.services-page {
+    flex-grow: 1;
+    background-image: url('https://i.imgur.com/utSPpvj.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex; /* allows overlay to cover robustly */
+  }
+  
+  .services-overlay {
+    flex-grow: 1;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.85); /* Faded hero background */
+    display: flex;
+    justify-content: center; /* Horizontally center everything */
+    align-items: center; /* Vertically center everything */
+    padding: 40px;
+    gap: 60px; /* Space between columns */
+  }
+  
+  /* Left Sidebar Links */
+  .services-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 250px;
+    flex-shrink: 0;
+  }
+  .services-sidebar a {
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+    transition: text-shadow 0.3s ease;
+  }
+  .services-sidebar a:hover, 
+  .services-sidebar a.selected-service {
+    text-shadow: 0.5px 0 0 currentcolor, -0.5px 0 0 currentcolor;
+  }
+  /* Center Content Area */
+  .services-content-col {
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    flex-direction: column;
+    gap: 20px;
+    width: 500px;
+    transition: opacity 0.4s ease;
+  }
+  .services-content-col.active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .services-content-col img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  .services-text {
+    color: #000;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  /* Right Contact Area */
+  .services-contact-col {
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    flex-direction: column;
+    gap: 15px;
+    width: 320px;
+    font-size: 14px;
+    transition: opacity 0.4s ease;
+  }
+  .services-contact-col.active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  /* Design Line */
+  .design-line {
+    height: 4px;
+    width: 100%;
+    background: linear-gradient(to right, #3b87b7, #5854a8); 
+  }
+  /* Footer */
+  footer {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px 40px;
+    background-color: #fff;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  
+  .footer-qr {
+    width: 70px;
+    height: 70px;
+    margin-right: 25px;
+    flex-shrink: 0;
+  }
+  
+  .footer-col {
+    margin-right: 60px;
+  }
+  .contact-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #000;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .contact-item a {
+    color: #000;
+    text-decoration: none;
+    transition: text-decoration 0.2s;
+  }
+  .contact-item a:hover {
+    text-decoration: underline;
+  }
+  .address-col a {
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .address-col a:hover {
+    color: #555;
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <a href="index.html" class="logo-container" aria-label="CEMESI Inicio">
+        <img src="https://i.imgur.com/eGYgKwb.jpg" alt="Logo CEMESI" class="logo-img">
+      </a>
+      <nav class="main-nav">
+        <!-- Servicios will be bold since we are on this page -->
+        <a href="servicios.html" class="active-link" data-translate="servicios">Servicios</a>
+        <a href="index.html" data-translate="nosotros">Nosotros</a>
+        <a href="index.html" data-translate="laboratorio">Laboratorio</a>
+        <a href="index.html" data-translate="convenios">Convenios</a>
+      </nav>
+    </div>
+    <div class="lang-switch">
+      <span id="lang-es" class="active-lang">ESP</span> / <span id="lang-en">ENG</span>
+    </div>
+  </header>
+  <main class="hero services-page">
+    <div class="services-overlay">
+      
+      <!-- Sidebar with Service Links -->
+      <div class="services-sidebar">
+        <!-- Reversed order as provided in images. -->
+        <a href="#" class="service-link" data-id="histopatologia"><span data-translate="histopatologia">Histopatología</span></a>
+        <a href="#" class="service-link" data-id="citologia"><span data-translate="citologia">Citología</span></a>
+        <a href="#" class="service-link" data-id="biologia_molecular"><span data-translate="biologia_molecular">Biología Molecular</span></a>
+        <a href="#" class="service-link" data-id="terapia_celular"><span data-translate="terapia_celular">Terapia Celular</span></a>
+        <a href="#" class="service-link" data-id="citometria_flujo"><span data-translate="citometria_flujo">Citometría de Flujo</span></a>
+        <a href="#" class="service-link" data-id="biologia_celular"><span data-translate="biologia_celular">Biología Celular</span></a>
+        <a href="#" class="service-link" data-id="peritaje_forense"><span data-translate="peritaje_forense">Peritaje Forense</span></a>
+        <a href="#" class="service-link" data-id="medicina_regenerativa"><span data-translate="medicina_regenerativa">Medicina Regenerativa</span></a>
+        <a href="#" class="service-link" data-id="criopreservacion"><span data-translate="criopreservacion">Criopreservación</span></a>
+      </div>
+      <!-- Main Center Image / Text Content -->
+      <div class="services-content-col" id="servicesContent">
+        <img id="serviceImg" src="" alt="Imagen de Servicio">
+        <div class="services-text" id="serviceText"></div>
+      </div>
+      <!-- Right Contact Info shown when a service is clicked -->
+      <div class="services-contact-col" id="servicesContact">
+        <p data-translate="contact_info">Para más información o contratación de servicios, no dude en contactarnos.</p>
+        <div class="contact-item">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <a href="tel:+56222075895">+56 222 07 58 95</a>
+        </div>
+        <div class="contact-item">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <a href="mailto:secretaria@cemesi.cl">secretaria@cemesi.cl</a>
+        </div>
+      </div>
+      
+    </div>
+  </main>
+  
+  <div class="design-line"></div>
+  <footer>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://cemesi.cl" alt="QR Code CEMESI" class="footer-qr">
+    <div class="footer-col address-col">
+      <a title="Guardia Vieja 339, Providencia, Chile">
+        Guardia Vieja 339,<br>
+        7510249 Providencia,<br>
+        Región Metropolitana,<br>
+        Chile
+      </a>
+    </div>
+    <div class="footer-col" style="color: #000;">
+      <span data-translate="horarios">Horarios</span><br>
+      <span data-translate="dias">Lunes a Viernes</span><br>
+      09.00-18.00
+    </div>
+    <div class="footer-col contact-col">
+      <div class="contact-item">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        <a href="tel:+56222075895">+56 222 07 58 95</a>
+      </div>
+      <div class="contact-item">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        <a href="mailto:secretaria@cemesi.cl">secretaria@cemesi.cl</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    const generalTranslations = {
+      es: {
+        servicios: "Servicios",
+        nosotros: "Nosotros",
+        laboratorio: "Laboratorio",
+        convenios: "Convenios",
+        histopatologia: "Histopatología",
+        citologia: "Citología",
+        biologia_molecular: "Biología Molecular",
+        terapia_celular: "Terapia Celular",
+        citometria_flujo: "Citometría de Flujo",
+        biologia_celular: "Biología Celular",
+        peritaje_forense: "Peritaje Forense",
+        medicina_regenerativa: "Medicina Regenerativa",
+        criopreservacion: "Criopreservación",
+        contact_info: "Para más información o contratación de servicios, no dude en contactarnos.",
+        horarios: "Horarios",
+        dias: "Lunes a Viernes"
+      },
+      en: {
+        servicios: "Services",
+        nosotros: "About Us",
+        laboratorio: "Laboratory",
+        convenios: "Agreements",
+        histopatologia: "Histopathology",
+        citologia: "Cytology",
+        biologia_molecular: "Molecular Biology",
+        terapia_celular: "Cell Therapy",
+        citometria_flujo: "Flow Cytometry",
+        biologia_celular: "Cell Biology",
+        peritaje_forense: "Forensic Expertise",
+        medicina_regenerativa: "Regenerative Medicine",
+        criopreservacion: "Cryopreservation",
+        contact_info: "For more information or to contract services, please don't hesitate to contact us.",
+        horarios: "Business Hours",
+        dias: "Monday to Friday"
+      }
+    };
+    const servicesData = {
+      histopatologia: {
+        es: "<b>▪️ Histopatología:</b><br>Análisis de tejidos a través de estudios microscópicos, permitiendo establecer diagnósticos clínicos precisos y fundamentar decisiones terapéuticas, siempre con los más altos estándares de calidad y tecnología.",
+        en: "<b>▪️ Histopathology:</b><br>Tissue analysis through microscopic studies, allowing accurate clinical diagnoses and basing therapeutic decisions, always with the highest standards of quality and technology.",
+        img: "https://i.imgur.com/y39bDLH.jpg"
+      },
+      citologia: {
+        es: "<b>▪️ Citología:</b><br>Análisis microscópico de células obtenidas por técnicas como frotis, raspado o aposición, permitiendo diagnósticos precisos como el caso del Papanicolaou.",
+        en: "<b>▪️ Cytology:</b><br>Microscopic analysis of cells obtained by techniques such as smear, scraping or apposition, allowing accurate diagnoses such as the Pap smear.",
+        img: "https://i.imgur.com/WEAjvap.jpg"
+      },
+      biologia_molecular: {
+        es: "<b>▪️ Biología molecular:</b><br>Técnicas avanzadas para el análisis de ácidos nucleicos, revolucionando el diagnóstico de diversas enfermedades con resultados precisos y confiables.",
+        en: "<b>▪️ Molecular Biology:</b><br>Advanced techniques for nucleic acid analysis, revolutionizing the diagnosis of various diseases with precise and reliable results.",
+        img: "https://i.imgur.com/ZHbIrNp.jpg"
+      },
+      terapia_celular: {
+        es: "<b>▪️ Terapia celular:</b><br>Utilización de células madre de diversas fuentes para reparar tejidos u órganos dañados, como en el caso de los trasplantes de médula ósea, ofreciendo opciones innovadoras para el tratamiento de diversas enfermedades.",
+        en: "<b>▪️ Cell Therapy:</b><br>Use of stem cells from various sources to repair damaged tissues or organs, such as in bone marrow transplants, offering innovative options for treating various diseases.",
+        img: "https://i.imgur.com/O16XsVt.jpg"
+      },
+      citometria_flujo: {
+        es: "<b>▪️ Citometría de flujo:</b><br>Análisis simultáneo de miles de células en suspensión, una técnica esencial y avanzada para el diagnóstico en el laboratorio clínico.",
+        en: "<b>▪️ Flow Cytometry:</b><br>Simultaneous analysis of thousands of cells in suspension, an essential and advanced technique for clinical laboratory diagnosis.",
+        img: "https://i.imgur.com/aNgnW96.jpg"
+      },
+      biologia_celular: {
+        es: "<b>▪️ Biología celular:</b><br>Estudio de técnicas avanzadas de reprogramación celular, explorando nuevas fronteras en el tratamiento y regeneración de tejidos.",
+        en: "<b>▪️ Cell Biology:</b><br>Study of advanced cell reprogramming techniques, exploring new frontiers in tissue treatment and regeneration.",
+        img: "https://i.imgur.com/b2oXJ8D.jpg"
+      },
+      peritaje_forense: {
+        es: "<b>▪️ Peritaje forense:</b><br>Análisis criminodinámicos con fines forenses, brindando apoyo técnico y científico a las investigaciones judiciales.",
+        en: "<b>▪️ Forensic Expertise:</b><br>Criminodynamic analysis for forensic purposes, providing technical and scientific support to judicial investigations.",
+        img: "https://i.imgur.com/OxVVWmq.jpg"
+      },
+      medicina_regenerativa: {
+        es: "<b>▪️ Medicina regenerativa:</b><br>Combinación de terapia celular con ingeniería genética y de tejidos, ofreciendo soluciones innovadoras para regenerar tejidos dañados por envejecimiento o traumatismos.",
+        en: "<b>▪️ Regenerative Medicine:</b><br>Combination of cell therapy with genetic and tissue engineering, offering innovative solutions to regenerate tissues damaged by aging or trauma.",
+        img: "https://i.imgur.com/0v0fiBO.jpg"
+      },
+      criopreservacion: {
+        es: "<b>▪️ Laboratorio de criopreservación:</b><br>Proceso especializado que congela células, tejidos u órganos a -196 ºC con nitrógeno líquido, contando con bancos de tumores, células y tejidos para su conservación a largo plazo.",
+        en: "<b>▪️ Cryopreservation Laboratory:</b><br>Specialized process that freezes cells, tissues, or organs at -196ºC with liquid nitrogen, maintaining banks of tumors, cells, and tissues for long-term storage.",
+        img: "https://i.imgur.com/2lU10Ig.jpg"
+      }
+    };
+    let currentLang = 'es';
+    let currentServiceId = null;
+    const btnEs = document.getElementById('lang-es');
+    const btnEn = document.getElementById('lang-en');
+    const contentCol = document.getElementById('servicesContent');
+    const contactCol = document.getElementById('servicesContact');
+    const serviceImg = document.getElementById('serviceImg');
+    const serviceText = document.getElementById('serviceText');
+    function setLang(lang) {
+      currentLang = lang;
+      
+      // Visual toggle
+      if (lang === 'es') {
+        btnEs.classList.add('active-lang');
+        btnEn.classList.remove('active-lang');
+      } else {
+        btnEn.classList.add('active-lang');
+        btnEs.classList.remove('active-lang');
+      }
+      // Update general DOM texts
+      document.querySelectorAll('[data-translate]').forEach(el => {
+        const key = el.getAttribute('data-translate');
+        if (generalTranslations[lang] && generalTranslations[lang][key]) {
+          el.textContent = generalTranslations[lang][key];
+        }
+      });
+      // Update specific service text if one is open
+      if (currentServiceId && servicesData[currentServiceId]) {
+        serviceText.innerHTML = servicesData[currentServiceId][lang];
+        // Title update for SEO
+        document.title = generalTranslations[lang][currentServiceId] + " - CEMESI";
+      }
+    }
+    function loadService(id) {
+      const data = servicesData[id];
+      if (!data) return;
+      currentServiceId = id;
+      // Sidebar visual update
+      document.querySelectorAll('.service-link').forEach(l => l.classList.remove('selected-service'));
+      const activeLink = document.querySelector(`[data-id="${id}"]`);
+      if(activeLink) activeLink.classList.add('selected-service');
+      // Update content
+      serviceImg.src = data.img;
+      serviceText.innerHTML = data[currentLang];
+      contentCol.classList.add('active');
+      contactCol.classList.add('active');
+      // URL Search Param Update (for SEO and sharing)
+      const url = new URL(window.location);
+      url.searchParams.set('servicio', id);
+      window.history.pushState({}, '', url);
+      // Title update
+      document.title = generalTranslations[currentLang][id] + " - CEMESI";
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      // Bind language switchers
+      btnEs.addEventListener('click', () => setLang('es'));
+      btnEn.addEventListener('click', () => setLang('en'));
+      // Bind service clicks
+      document.querySelectorAll('.service-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          loadService(link.getAttribute('data-id'));
+        });
+      });
+      // Check URL parameters for direct loads
+      const urlParams = new URLSearchParams(window.location.search);
+      const initService = urlParams.get('servicio');
+      if (initService && servicesData[initService]) {
+        loadService(initService);
+      }
+    });
+    // Handle back/forward navigation within the app for URL params
+    window.addEventListener('popstate', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get('servicio');
+      if (id && servicesData[id]) {
+        loadService(id);
+      } else {
+        // Clear if ?servicio= goes away
+        contentCol.classList.remove('active');
+        contactCol.classList.remove('active');
+        document.querySelectorAll('.service-link').forEach(l => l.classList.remove('selected-service'));
+        document.title = "Servicios - CEMESI";
+        currentServiceId = null;
+      }
+    });
+  </script>
+</body>
+</html>
