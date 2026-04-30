@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CEMESI - 35 años de excelencia diagnostica</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #000;
+  }
+  
+  /* Header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    height: 90px;
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: flex-end;
+    gap: 60px;
+    height: 100%;
+    padding-bottom: 5px;
+  }
+  .logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    line-height: 1;
+  }
+  
+  .logo-img {
+    height: 60px;
+    margin-bottom: 0px;
+    /* Removed negative top margin and expanded viewBox to avoid cropping */
+    position: relative;
+    top: 0px; 
+  }
+  .logo-text {
+    color: #3b87b7; /* Teal-ish blue */
+    font-weight: bold;
+    letter-spacing: 5px;
+    font-size: 16px;
+    margin-left: 5px; /* Offset to center under infinity */
+  }
+  /* Navigation */
+  nav.main-nav {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+  }
+  nav.main-nav a {
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+    padding-bottom: 2px;
+    transition: text-shadow 0.3s ease;
+  }
+  /* Smooth transition to bold hover effect using text-shadow */
+  nav.main-nav a:hover {
+    text-shadow: 0.5px 0 0 currentcolor, -0.5px 0 0 currentcolor;
+  }
+  
+  .lang-switch {
+    font-size: 15px;
+    font-weight: normal; /* Made regular instead of bold */
+    padding-bottom: 5px;
+    align-self: flex-end;
+  }
+  .lang-switch span {
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .lang-switch span:hover {
+    color: #555;
+  }
+  .lang-switch span.active-lang {
+    font-weight: normal; 
+    text-decoration: underline;
+  }
+  
+  /* Main Content */
+  .hero {
+    flex-grow: 1;
+    background-image: url('https://i.imgur.com/utSPpvj.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .hero-banner {
+    background-color: rgba(255, 255, 255, 0.82);
+    display: inline-block; /* Proportional to text */
+    padding: 25px 60px;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 2s forwards; /* Fades in 2 seconds after opening */
+  }
+  
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+  
+  .hero-banner h1 {
+    font-weight: 400;
+    font-size: 50px; /* Slightly reduced to fit longer text nicely */
+    color: #6a6a6a;
+    margin: 0;
+    letter-spacing: -0.5px;
+  }
+  
+  /* Design Line */
+  .design-line {
+    height: 4px;
+    width: 100%;
+    /* Gradient matching the logo colors */
+    background: linear-gradient(to right, #3b87b7, #5854a8); 
+  }
+  /* Footer */
+  footer {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px 40px;
+    background-color: #fff;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  
+  .footer-qr {
+    width: 70px;
+    height: 70px;
+    margin-right: 25px;
+    flex-shrink: 0;
+  }
+  
+  .footer-col {
+    margin-right: 60px;
+  }
+  
+  .address-col a {
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .address-col a:hover {
+    color: #555;
+    text-decoration: underline;
+  }
+  
+  /* Map Modal */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    display: none; /* Flex when active */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .modal-overlay.active {
+    display: flex;
+    opacity: 1;
+  }
+  .modal-content {
+    background: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    width: 80%;
+    max-width: 800px;
+    height: 70%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .modal-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 1;
+  }
+  .modal-close:hover {
+    color: #ddd;
+  }
+  .modal-content iframe {
+    flex-grow: 1;
+    border: none;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <a href="#" class="logo-container">
+        <!-- SVG viewBox expanded to avoid any clipping of the logo boundaries -->
+        <svg class="logo-img" viewBox="-5 -5 160 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Left dot -->
+          <circle cx="25" cy="20" r="8" fill="#3b87b7"/>
+          <!-- Right dot -->
+          <circle cx="125" cy="20" r="8" fill="#5854a8"/>
+          <!-- Infinity symbol -->
+          <path d="M 75,55 C 50,20 15,30 25,60 C 35,90 65,75 75,55 C 85,35 115,20 125,50 C 135,80 100,90 75,55 Z" fill="none" stroke="url(#logo-grad)" stroke-width="12" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#3b87b7" />
+              <stop offset="100%" stop-color="#5854a8" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="logo-text">CEMESI</div>
+      </a>
+      <nav class="main-nav">
+        <a href="#" data-translate="servicios">Servicios</a>
+        <a href="#" data-translate="convenios">Convenios</a>
+        <a href="#" data-translate="nosotros">Nosotros</a>
+      </nav>
+    </div>
+    <div class="lang-switch">
+      <span id="lang-es" class="active-lang">ESP</span> / <span id="lang-en">ENG</span>
+    </div>
+  </header>
+  <main class="hero">
+    <div class="hero-banner">
+      <h1 data-translate="hero_title">35 años de excelencia, precisión y confianza en diagnóstico</h1>
+    </div>
+  </main>
+  
+  <div class="design-line"></div>
+  <footer>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://cemesi.cl" alt="QR Code" class="footer-qr">
+    <div class="footer-col address-col">
+      <a id="address-link" title="Haz clic para ver el mapa">
+        Guardia Vieja 339,<br>
+        7510249 Providencia,<br>
+        Región Metropolitana,<br>
+        Chile
+      </a>
+    </div>
+    <div class="footer-col" style="color: #000;">
+      <span data-translate="horarios">Horarios</span><br>
+      <span data-translate="dias">Lunes a Viernes</span><br>
+      09.00-18.00
+    </div>
+    <div class="footer-col" style="color: #000;">
+      secretaria@cemesi.cl<br>
+      <span data-translate="telefono">Telefono</span>
+    </div>
+  </footer>
+  <div class="modal-overlay" id="mapModal">
+    <div class="modal-content">
+      <span class="modal-close" id="closeMap">&times;</span>
+      <iframe src="https://maps.google.com/maps?q=Guardia+Vieja+339,+Providencia,+Chile&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+    </div>
+  </div>
+  <script>
+    // Translation Logic
+    const translations = {
+      es: {
+        servicios: "Servicios",
+        convenios: "Convenios",
+        nosotros: "Nosotros",
+        hero_title: "35 años de excelencia, precisión y confianza en diagnóstico",
+        horarios: "Horarios",
+        dias: "Lunes a Viernes",
+        telefono: "Telefono"
+      },
+      en: {
+        servicios: "Services",
+        convenios: "Agreements",
+        nosotros: "About Us",
+        hero_title: "35 years of excellence, precision, and trust in diagnostics",
+        horarios: "Business Hours",
+        dias: "Monday to Friday",
+        telefono: "Phone"
+      }
+    };
+    const btnEs = document.getElementById('lang-es');
+    const btnEn = document.getElementById('lang-en');
+    function setLang(lang) {
+      // Update active state
+      if (lang === 'es') {
+        btnEs.classList.add('active-lang');
+        btnEn.classList.remove('active-lang');
+      } else {
+        btnEn.classList.add('active-lang');
+        btnEs.classList.remove('active-lang');
+      }
+      // Update text content
+      document.querySelectorAll('[data-translate]').forEach(el => {
+        const key = el.getAttribute('data-translate');
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+    }
+    // Modal Logic
+    document.addEventListener('DOMContentLoaded', () => {
+      btnEs.addEventListener('click', () => setLang('es'));
+      btnEn.addEventListener('click', () => setLang('en'));
+      const addressLink = document.getElementById('address-link');
+      const mapModal = document.getElementById('mapModal');
+      const closeMap = document.getElementById('closeMap');
+      addressLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        mapModal.classList.add('active');
+      });
+      closeMap.addEventListener('click', () => {
+        mapModal.classList.remove('active');
+      });
+      mapModal.addEventListener('click', (e) => {
+        if (e.target === mapModal) {
+          mapModal.classList.remove('active');
+        }
+      });
+      
+      // Allow escape key to close map
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mapModal.classList.contains('active')) {
+          mapModal.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
