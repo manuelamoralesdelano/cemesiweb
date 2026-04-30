@@ -121,14 +121,7 @@
     margin: 0;
     letter-spacing: -0.5px;
   }
-  
-  /* Design Line */
-  .design-line {
-    height: 4px;
-    width: 100%;
-    /* Gradient matching the logo colors */
-    background: linear-gradient(to right, #3b87b7, #5854a8); 
-  }
+
   /* Footer */
   footer {
     display: flex;
