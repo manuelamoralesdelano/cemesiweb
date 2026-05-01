@@ -14,6 +14,7 @@
     flex-direction: column;
     min-height: 100vh;
     color: #000;
+    overflow-y: hidden;
   }
   
   /* Header */
@@ -101,8 +102,8 @@
     background-color: rgba(255, 255, 255, 0.85); 
     display: flex;
     justify-content: center; 
-    align-items: center; 
-    padding: 60px;
+    align-items: flex-start; 
+    padding: min(8vh, 50px) 60px;
     gap: 60px; 
   }
   
@@ -140,14 +141,18 @@
     pointer-events: auto;
   }
   
-  .nosotros-inner-html p {
-    margin-bottom: 10px;
+  .nosotros-content div {
+    font-size: clamp(10px, 1.45vh, 14px) !important;
+    line-height: 1.35 !important;
   }
-  /* Design Line */
-  .design-line {
-    height: 4px;
-    width: 100%;
-    background: linear-gradient(to right, #3b87b7, #5854a8); 
+  
+  .nosotros-content b {
+    font-size: clamp(11px, 1.5vh, 15px) !important;
+  }
+  
+  .nosotros-content img {
+    max-height: 45vh !important;
+    object-fit: contain !important;
   }
   /* Footer */
   footer {
@@ -286,7 +291,6 @@
     </div>
   </main>
   
-  <div class="design-line"></div>
   <footer>
     <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://cemesi.cl" alt="QR Code CEMESI" class="footer-qr">
     <div class="footer-col address-col">
