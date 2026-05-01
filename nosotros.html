@@ -105,7 +105,7 @@
     display: flex;
     justify-content: center; 
     align-items: flex-start; 
-    padding: min(8vh, 50px) 60px;
+    padding: min(4vh, 25px) 60px;
     gap: 60px; 
   }
   
@@ -133,7 +133,8 @@
     opacity: 0;
     pointer-events: none;
     flex-direction: column;
-    width: 1000px;
+    width: 100%;
+    max-width: 1100px;
     align-items: center;
     transition: opacity 0.4s ease;
   }
@@ -150,10 +151,12 @@
   
   .nosotros-content b {
     font-size: clamp(13px, 1.8vh, 18px) !important;
+    display: inline-block;
+    margin-top: 15px;
   }
   
   .nosotros-content img {
-    max-height: 45vh !important;
+    max-height: 38vh !important;
     object-fit: contain !important;
   }
   /* Footer */
@@ -381,7 +384,7 @@
       },
       equipo: {
         es: `
-          <div style="display: flex; gap: 60px; justify-content: center; width: 100%;">
+          <div style="display: flex; gap: 80px; justify-content: center; width: 100%; text-align: center;">
             <div style="flex: 1; font-size: 14px; line-height: 1.5; color: #000;">
               <b>Dirección y Gestión</b><br><br>
               Director Médico — Bernardo Morales<br>
@@ -402,7 +405,7 @@
           </div>
         `,
         en: `
-          <div style="display: flex; gap: 60px; justify-content: center; width: 100%;">
+          <div style="display: flex; gap: 80px; justify-content: center; width: 100%; text-align: center;">
             <div style="flex: 1; font-size: 14px; line-height: 1.5; color: #000;">
               <b>Management and Administration</b><br><br>
               Medical Director — Bernardo Morales<br>
@@ -469,7 +472,7 @@
       },
       tecnologia: {
         es: `
-          <div style="display: flex; flex-direction: column; gap: 20px; max-width: 600px;">
+          <div style="display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 850px;">
             <img src="https://i.imgur.com/I9M4WFB.jpg" alt="Illumina iSeq 2000" style="width: 100%; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
             <div style="font-size: 14px; line-height: 1.5; color: #000;">
               <b>Illumina iSeq 2000</b><br>
@@ -479,7 +482,7 @@
           </div>
         `,
         en: `
-          <div style="display: flex; flex-direction: column; gap: 20px; max-width: 600px;">
+          <div style="display: flex; flex-direction: column; gap: 20px; width: 100%; max-width: 850px;">
             <img src="https://i.imgur.com/I9M4WFB.jpg" alt="Illumina iSeq 2000" style="width: 100%; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
             <div style="font-size: 14px; line-height: 1.5; color: #000;">
               <b>Illumina iSeq 2000</b><br>
