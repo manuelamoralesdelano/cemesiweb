@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Conozca al equipo e historia detrás de CEMESI. Nuestro compromiso e innovación tecnológica en el área de diagnóstico médico.">
+<meta name="keywords" content="CEMESI, Nosotros, equipo médico, tecnología, compromiso, Dr. Bernardo Morales, salud, Providencia">
+<title>Nosotros - CEMESI</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: #000;
+  }
+  
+  /* Header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    height: 90px;
+  }
+  
+  .header-left {
+    display: flex;
+    align-items: flex-end;
+    gap: 60px;
+    height: 100%;
+    padding-bottom: 5px;
+  }
+  .logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+  
+  .logo-img {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 0px;
+    position: relative;
+    top: 5px; 
+  }
+  /* Navigation */
+  nav.main-nav {
+    display: flex;
+    gap: 85px;
+    align-items: center;
+    position: relative;
+    top: -5px;
+  }
+  nav.main-nav a {
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+    padding-bottom: 2px;
+    transition: text-shadow 0.3s ease;
+  }
+  nav.main-nav a:hover, nav.main-nav a.active-link {
+    text-shadow: 0.5px 0 0 currentcolor, -0.5px 0 0 currentcolor;
+  }
+  
+  .lang-switch {
+    font-size: 15px;
+    font-weight: normal; 
+    padding-bottom: 5px;
+    align-self: flex-end;
+  }
+  .lang-switch span {
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .lang-switch span:hover {
+    color: #555;
+  }
+  .lang-switch span.active-lang {
+    font-weight: normal; 
+    text-decoration: underline;
+  }
+  
+  /* Main Content */
+  .hero.nosotros-page {
+    flex-grow: 1;
+    background-image: url('https://i.imgur.com/utSPpvj.jpg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+  }
+  
+  .nosotros-overlay {
+    flex-grow: 1;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.85); 
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    padding: 60px;
+    gap: 60px; 
+  }
+  
+  /* Left Sidebar Links */
+  .nosotros-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 250px;
+    flex-shrink: 0;
+  }
+  .nosotros-sidebar a {
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+    transition: text-shadow 0.3s ease;
+  }
+  .nosotros-sidebar a:hover, 
+  .nosotros-sidebar a.selected-tab {
+    text-shadow: 0.5px 0 0 currentcolor, -0.5px 0 0 currentcolor;
+  }
+  /* Center Content Area */
+  .nosotros-content {
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    flex-direction: column;
+    width: 800px;
+    transition: opacity 0.4s ease;
+  }
+  .nosotros-content.active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .nosotros-inner-html p {
+    margin-bottom: 10px;
+  }
+
+  /* Footer */
+  footer {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px 40px;
+    background-color: #fff;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  
+  .footer-qr {
+    width: 70px;
+    height: 70px;
+    margin-right: 25px;
+    flex-shrink: 0;
+  }
+  
+  .footer-col {
+    margin-right: 60px;
+  }
+  .contact-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #000;
+  }
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .contact-item a {
+    color: #000;
+    text-decoration: none;
+    transition: text-decoration 0.2s;
+  }
+  .contact-item a:hover {
+    text-decoration: underline;
+  }
+  .address-col a {
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .address-col a:hover {
+    color: #555;
+    text-decoration: underline;
+  }
+  /* Map Modal */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .modal-overlay.active {
+    display: flex;
+    opacity: 1;
+  }
+  .modal-content {
+    background: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    width: 80%;
+    max-width: 800px;
+    height: 70%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .modal-close {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    line-height: 1;
+  }
+  .modal-close:hover {
+    color: #ddd;
+  }
+  .modal-content iframe {
+    flex-grow: 1;
+    border: none;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <a href="index.html" class="logo-container" aria-label="CEMESI Inicio">
+        <img src="https://i.imgur.com/eGYgKwb.jpg" alt="Logo CEMESI" class="logo-img">
+      </a>
+      <nav class="main-nav">
+        <a href="servicios.html" data-translate="servicios">Servicios</a>
+        <a href="nosotros.html" class="active-link" data-translate="nosotros">Nosotros</a>
+        <a href="convenios.html" data-translate="convenios">Convenios</a>
+      </nav>
+    </div>
+    <div class="lang-switch">
+      <span id="lang-es" class="active-lang">ESP</span> / <span id="lang-en">ENG</span>
+    </div>
+  </header>
+  <main class="hero nosotros-page">
+    <div class="nosotros-overlay">
+      
+      <!-- Sidebar with Links -->
+      <div class="nosotros-sidebar">
+        <a href="#" class="tab-link" data-id="direccion"><span data-translate="tab_direccion">Dirección</span></a>
+        <a href="#" class="tab-link" data-id="equipo"><span data-translate="tab_equipo">Equipo</span></a>
+        <a href="#" class="tab-link" data-id="compromiso"><span data-translate="tab_compromiso">Compromiso</span></a>
+        <a href="#" class="tab-link" data-id="tecnologia"><span data-translate="tab_tecnologia">Nueva Tecnología</span></a>
+      </div>
+      <!-- Main Center Content -->
+      <div class="nosotros-content" id="nosotrosContent">
+        <!-- Inner HTML will be injected here logically by JS -->
+      </div>
+      
+    </div>
+  </main>
+  
+  <div class="design-line"></div>
+  <footer>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://cemesi.cl" alt="QR Code CEMESI" class="footer-qr">
+    <div class="footer-col address-col">
+      <a id="address-link" title="Guardia Vieja 339, Providencia, Chile">
+        Guardia Vieja 339,<br>
+        7510249 Providencia,<br>
+        Región Metropolitana,<br>
+        Chile
+      </a>
+    </div>
+    <div class="footer-col" style="color: #000;">
+      <span data-translate="horarios">Horarios</span><br>
+      <span data-translate="dias">Lunes a Viernes</span><br>
+      09.00-18.00
+    </div>
+    <div class="footer-col contact-col">
+      <div class="contact-item">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        <a href="tel:+56222075895">+56 222 07 58 95</a>
+      </div>
+      <div class="contact-item">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        <a href="mailto:secretaria@cemesi.cl">secretaria@cemesi.cl</a>
+      </div>
+    </div>
+  </footer>
+  <div class="modal-overlay" id="mapModal">
+    <div class="modal-content">
+      <span class="modal-close" id="closeMap">&times;</span>
+      <iframe src="https://maps.google.com/maps?q=Guardia+Vieja+339,+Providencia,+Chile&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Mapa de ubicación CEMESI"></iframe>
+    </div>
+  </div>
+  <script>
+    const generalTranslations = {
+      es: {
+        servicios: "Servicios",
+        nosotros: "Nosotros",
+        convenios: "Convenios",
+        horarios: "Horarios",
+        dias: "Lunes a Viernes",
+        tab_direccion: "Dirección",
+        tab_equipo: "Equipo",
+        tab_compromiso: "Compromiso",
+        tab_tecnologia: "Nueva Tecnología"
+      },
+      en: {
+        servicios: "Services",
+        nosotros: "About Us",
+        convenios: "Agreements",
+        horarios: "Business Hours",
+        dias: "Monday to Friday",
+        tab_direccion: "Direction",
+        tab_equipo: "Team",
+        tab_compromiso: "Commitment",
+        tab_tecnologia: "New Technology"
+      }
+    };
+    const nosotrosData = {
+      direccion: {
+        es: `
+          <div style="display: flex; gap: 40px; align-items: flex-start;">
+            <div style="flex: 1; min-width: 250px;">
+              <img src="https://i.imgur.com/jNqzMGd.jpg" alt="Dr. Bernardo Morales" style="width: 100%; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+            </div>
+            <div style="flex: 1.5; font-size: 14px; line-height: 1.5; color: #000;">
+              <b>Dr. Bernardo Morales</b><br><br>
+              El Dr. Bernardo Morales se desempeña como Director de CEMESI, liderando con compromiso, ética y excelencia el desarrollo de servicios médicos especializados.<br><br>
+              Con una sólida trayectoria profesional en Chile y una amplia experiencia en el ámbito clínico y científico, el Dr. Morales ha orientado su labor hacia la innovación, la calidad en la atención y la implementación de tecnologías avanzadas en beneficio de los pacientes.<br><br>
+              Bajo su dirección, CEMESI se consolida como un centro de referencia, promoviendo altos estándares en diagnóstico, tratamiento y servicios integrales de salud, siempre enfocados en la seguridad, confidencialidad y bienestar de quienes confían en nuestra institución.
+            </div>
+          </div>
+        `,
+        en: `
+          <div style="display: flex; gap: 40px; align-items: flex-start;">
+            <div style="flex: 1; min-width: 250px;">
+              <img src="https://i.imgur.com/jNqzMGd.jpg" alt="Dr. Bernardo Morales" style="width: 100%; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+            </div>
+            <div style="flex: 1.5; font-size: 14px; line-height: 1.5; color: #000;">
+              <b>Dr. Bernardo Morales</b><br><br>
+              Dr. Bernardo Morales serves as Director of CEMESI, leading with commitment, ethics, and excellence in the development of specialized medical services.<br><br>
+              With a solid professional trajectory in Chile and extensive experience in the clinical and scientific fields, Dr. Morales has focused his work on innovation, quality of care, and the implementation of advanced technologies for the benefit of patients.<br><br>
+              Under his leadership, CEMESI consolidates itself as a reference center, promoting high standards in diagnosis, treatment, and comprehensive health services, always focused on the safety, confidentiality, and well-being of those who trust our institution.
+            </div>
+          </div>
+        `
+      },
+      equipo: {
+        es: `
+          <div style="display: flex; gap: 60px;">
+            <div style="flex: 1; font-size: 14px; line-height: 1.5; color: #000;">
+              <b>Dirección y Gestión</b><br><br>
+              Director Médico — Bernardo Morales<br>
+              <i>Médico – Cirujano, Universidad de Concepción 1987, especialista Anátomo-Patólogo, Pontificia Universidad Católica de Chile 1991.</i><br><br>
+              Director Técnico — Domingo Lizama<br>
+              <i>Tecnólogo Médico, especialista en Citogenética, Patología Molecular, Citometría de Flujo, criopreservación, licitaciones y Gestión APA.</i><br><br>
+              <b>Soporte y Operaciones</b><br><br>
+              Encargado de Toma de Muestras — Natalia Fuentes<br><br>
+              Técnico de Laboratorio — Diego Castro<br><br>
+              Auxiliar de Laboratorio — Daniela Soto
+            </div>
+            <div style="flex: 1; font-size: 14px; line-height: 1.5; color: #000;">
+              <b>Área Administrativa</b><br><br>
+              Recepción y Admisión — Valentina Díaz<br><br>
+              Asistente Administrativo — José Martínez<br><br>
+              Encargado de Finanzas — Patricia Gómez
+            </div>
+          </div>
+        `,
+        en: `
+          <div style="display: flex; gap: 60px;">
+            <div style="flex: 1; font-size: 14px; line-height: 1.5; color: #000;">
+              <b>Management and Administration</b><br><br>
+              Medical Director — Bernardo Morales<br>
+              <i>Medical Surgeon, University of Concepción 1987, Anatomic Pathologist specialist, Pontifical Catholic University of Chile 1991.</i><br><br>
+              Technical Director — Domingo Lizama<br>
+              <i>Medical Technologist, specialist in Cytogenetics, Molecular Pathology, Flow Cytometry, cryopreservation, bidding and APA Management.</i><br><br>
+              <b>Support and Operations</b><br><br>
+              Sampling Manager — Natalia Fuentes<br><br>
+              Laboratory Technician — Diego Castro<br><br>
+              Laboratory Assistant — Daniela Soto
+            </div>
+            <div style="flex: 1; font-size: 14px; line-height: 1.5; color: #000;">
+              <b>Administrative Area</b><br><br>
+              Reception and Admission — Valentina Díaz<br><br>
+              Administrative Assistant — José Martínez<br><br>
+              Finance Manager — Patricia Gómez
+            </div>
+          </div>
+        `
+      },
+      compromiso: {
+        es: `
+          <div style="display: flex; gap: 60px;">
+            <div style="flex: 1; font-size: 14px; line-height: 1.5; color: #000;">
+              <b>Compromiso</b><br>
+              Nuestra Misión es brindar servicios de anatomía patológica de alta calidad, seguros, oportunos y accesibles, apoyando el diagnóstico y tratamiento médico con tecnología de vanguardia, atención personalizada y un profundo compromiso humano. Nuestra labor está orientada tanto al sector público como privado, siempre poniendo al paciente en el centro.<br><br>
+              Nuestra visión es consolidarnos como un laboratorio de referencia a nivel nacional, reconocido por su excelencia técnica, la calidez en la atención y un firme compromiso ético con pacientes, profesionales de la salud e instituciones.<br><br>
+              Esta filosofía se basa en valores como la transparencia, mediante una comunicación clara y resultados confiables, y la responsabilidad, entendiendo el impacto de cada diagnóstico. A ello se suma la eficiencia en sus procesos, garantizando tiempos de respuesta ágiles sin comprometer la calidad.<br><br>
+              <b>Procesos rápidos y eficientes</b><br>
+              En Cemesi nos aseguramos de que nuestros procesos sean ágiles y eficientes. Las biopsias rutinarias tienen, en promedio, un tiempo de entrega de entre 4 y 7 días desde su ingreso al laboratorio.<br>
+              Si se requieren exámenes especiales o más específicos, el tiempo puede extenderse hasta 15 días. En todos los casos, informamos oportunamente a los pacientes sobre cualquier posible demora.
+            </div>
+            <div style="flex: 1; font-size: 14px; line-height: 1.5; color: #000;">
+              <b>Clientes particulares</b><br>
+              Puede enviar sus muestras a nuestras instalaciones y, una vez procesado el examen, tiene la opción de retirarlo directamente en nuestro laboratorio.<br><br>
+              <b>Clientes institucionales</b><br>
+              En Cemesi ofrecemos nuestros servicios a una amplia gama de instituciones de salud, incluyendo clínicas, hospitales y servicios de distintas áreas, con un enfoque profesional y confiable.<br><br>
+              <b>Acceso</b><br>
+              Contamos con convenios con todas las Isapres y Fonasa para exámenes de histopatología, con Cruz Blanca y Consalud, a través de Oncored, para la criopreservación de espermios, facilitando un acceso simple y eficiente a nuestros servicios.
+            </div>
+          </div>
+        `,
+        en: `
+          <div style="display: flex; gap: 60px;">
+            <div style="flex: 1; font-size: 14px; line-height: 1.5; color: #000;">
+              <b>Commitment</b><br>
+              Our Mission is to provide high-quality, safe, timely, and accessible pathological anatomy services, supporting medical diagnosis and treatment with cutting edge technology, personalized care and deep human commitment. Our work caters to both the public and private sectors, always putting the patient at the center.<br><br>
+              Our vision is to consolidate as a reference laboratory nationwide, recognized for its technical excellence, warmth in care, and a firm ethical commitment to patients, health professionals, and institutions.<br><br>
+              This philosophy is based on values such as transparency, through clear communication and reliable results, and responsibility, understanding the impact of each diagnosis. Adding efficiency to its processes, guaranteeing agile response times without compromising quality.<br><br>
+              <b>Fast and efficient processes</b><br>
+              At CEMESI we ensure that our processes are fast and efficient. Routine biopsies take an average delivery time of 4 to 7 days from their admission to the laboratory.<br>
+              If special or more specific exams are required, time can extend up to 15 days. In all cases, we inform patients promptly about any possible delay.
+            </div>
+            <div style="flex: 1; font-size: 14px; line-height: 1.5; color: #000;">
+              <b>Private clients</b><br>
+              You can send your samples to our facilities and, once the exam is processed, you have the option to pick it up directly in our laboratory.<br><br>
+              <b>Institutional clients</b><br>
+              At Cemesi we offer our services to a wide range of health institutions, including clinics, hospitals, and multidisciplinary services, with a professional and reliable approach.<br><br>
+              <b>Access</b><br>
+              We maintain agreements with all Isapres and Fonasa for histopathology exams, with Cruz Blanca and Consalud, through Oncored, for sperm cryopreservation, facilitating simple and efficient access to our services.
+            </div>
+          </div>
+        `
+      },
+      tecnologia: {
+        es: `
+          <div style="display: flex; flex-direction: column; gap: 20px; max-width: 600px;">
+            <img src="https://i.imgur.com/I9M4WFB.jpg" alt="Illumina iSeq 2000" style="width: 100%; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+            <div style="font-size: 14px; line-height: 1.5; color: #000;">
+              <b>Illumina iSeq 2000</b><br>
+              La Illumina iSeq 2000 es una plataforma de secuenciación genética de última generación que permite analizar el ADN con alta precisión mediante tecnología de Next-Generation Sequencing (NGS). Su función principal es leer millones de fragmentos de material genético en paralelo, lo que permite identificar variaciones, mutaciones y características específicas del genoma de forma rápida y confiable.<br><br>
+              Este equipo es fundamental en el laboratorio moderno porque facilita el diagnóstico molecular de diversas enfermedades, incluyendo cáncer, patologías genéticas y enfermedades infecciosas. Gracias a su alta sensibilidad, permite detectar alteraciones incluso en etapas muy tempranas, mejorando significativamente la capacidad de prevención, diagnóstico y seguimiento clínico.
+            </div>
+          </div>
+        `,
+        en: `
+          <div style="display: flex; flex-direction: column; gap: 20px; max-width: 600px;">
+            <img src="https://i.imgur.com/I9M4WFB.jpg" alt="Illumina iSeq 2000" style="width: 100%; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+            <div style="font-size: 14px; line-height: 1.5; color: #000;">
+              <b>Illumina iSeq 2000</b><br>
+              The Illumina iSeq 2000 is a state-of-the-art genetic sequencing platform that allows DNA analysis with high precision using Next-Generation Sequencing (NGS) technology. Its main function is to read millions of genetic material fragments in parallel, allowing the identification of variations, mutations, and specific features of the genome quickly and reliably.<br><br>
+              This equipment is fundamental in the modern laboratory because it facilitates the molecular diagnosis of various diseases, including cancer, genetic pathologies, and infectious diseases. Thanks to its high sensitivity, it detects alterations even at very early stages, significantly enhancing the capacity for prevention, diagnosis, and clinical follow-up.
+            </div>
+          </div>
+        `
+      }
+    };
+    let currentLang = 'es';
+    let currentTabId = null;
+    const btnEs = document.getElementById('lang-es');
+    const btnEn = document.getElementById('lang-en');
+    const contentBox = document.getElementById('nosotrosContent');
+    function setLang(lang) {
+      currentLang = lang;
+      
+      if (lang === 'es') {
+        btnEs.classList.add('active-lang');
+        btnEn.classList.remove('active-lang');
+      } else {
+        btnEn.classList.add('active-lang');
+        btnEs.classList.remove('active-lang');
+      }
+      // general DOM texts
+      document.querySelectorAll('[data-translate]').forEach(el => {
+        const key = el.getAttribute('data-translate');
+        if (generalTranslations[lang] && generalTranslations[lang][key]) {
+          el.textContent = generalTranslations[lang][key];
+        }
+      });
+      // Update active tab content
+      if (currentTabId && nosotrosData[currentTabId]) {
+        contentBox.innerHTML = nosotrosData[currentTabId][lang];
+        document.title = generalTranslations[lang]["tab_" + currentTabId] + " - CEMESI";
+      }
+    }
+    function loadTab(id) {
+      const data = nosotrosData[id];
+      if (!data) return;
+      currentTabId = id;
+      document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('selected-tab'));
+      const activeLink = document.querySelector(`[data-id="${id}"]`);
+      if(activeLink) activeLink.classList.add('selected-tab');
+      contentBox.innerHTML = data[currentLang];
+      contentBox.classList.add('active');
+      const url = new URL(window.location);
+      url.searchParams.set('seccion', id);
+      window.history.pushState({}, '', url);
+      document.title = generalTranslations[currentLang]["tab_" + id] + " - CEMESI";
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      btnEs.addEventListener('click', () => setLang('es'));
+      btnEn.addEventListener('click', () => setLang('en'));
+      document.querySelectorAll('.tab-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          loadTab(link.getAttribute('data-id'));
+        });
+      });
+      const urlParams = new URLSearchParams(window.location.search);
+      const initTab = urlParams.get('seccion');
+      if (initTab && nosotrosData[initTab]) {
+        loadTab(initTab);
+      }
+      // Map Modal mirror logic
+      const addressLink = document.getElementById('address-link');
+      const mapModal = document.getElementById('mapModal');
+      const closeMap = document.getElementById('closeMap');
+      if (addressLink) {
+        addressLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          mapModal.classList.add('active');
+        });
+      }
+      if (closeMap) {
+        closeMap.addEventListener('click', () => {
+          mapModal.classList.remove('active');
+        });
+      }
+      if (mapModal) {
+        mapModal.addEventListener('click', (e) => {
+          if (e.target === mapModal) {
+            mapModal.classList.remove('active');
+          }
+        });
+      }
+      
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mapModal && mapModal.classList.contains('active')) {
+          mapModal.classList.remove('active');
+        }
+      });
+    });
+    window.addEventListener('popstate', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get('seccion');
+      if (id && nosotrosData[id]) {
+        loadTab(id);
+      } else {
+        contentBox.classList.remove('active');
+        document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('selected-tab'));
+        document.title = "Nosotros - CEMESI";
+        currentTabId = null;
+      }
+    });
+  </script>
+</body>
+</html>
