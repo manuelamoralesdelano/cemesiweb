@@ -127,14 +127,14 @@
   .nosotros-sidebar a.selected-tab {
     text-shadow: 0.5px 0 0 currentcolor, -0.5px 0 0 currentcolor;
   }
-  /* Center Content Area */
   .nosotros-content {
     display: flex;
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
     flex-direction: column;
-    width: 800px;
+    width: 1000px;
+    align-items: center;
     transition: opacity 0.4s ease;
   }
   .nosotros-content.active {
@@ -144,12 +144,12 @@
   }
   
   .nosotros-content div {
-    font-size: clamp(10px, 1.45vh, 14px) !important;
-    line-height: 1.35 !important;
+    font-size: clamp(12px, 1.7vh, 16px) !important;
+    line-height: 1.4 !important;
   }
   
   .nosotros-content b {
-    font-size: clamp(11px, 1.5vh, 15px) !important;
+    font-size: clamp(13px, 1.8vh, 18px) !important;
   }
   
   .nosotros-content img {
@@ -353,9 +353,9 @@
     const nosotrosData = {
       direccion: {
         es: `
-          <div style="display: flex; gap: 40px; align-items: flex-start;">
+          <div style="display: flex; gap: 40px; align-items: flex-start; justify-content: center; width: 100%;">
             <div style="flex: 1; min-width: 250px;">
-              <img src="https://i.imgur.com/jNqzMGd.jpg" alt="Dr. Bernardo Morales" style="width: 100%; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+              <img src="https://i.imgur.com/jNqzMGd.jpg" alt="Dr. Bernardo Morales" style="width: 100%; border-radius: 4px;">
             </div>
             <div style="flex: 1.5; font-size: 14px; line-height: 1.5; color: #000;">
               <b>Dr. Bernardo Morales</b><br><br>
@@ -366,9 +366,9 @@
           </div>
         `,
         en: `
-          <div style="display: flex; gap: 40px; align-items: flex-start;">
+          <div style="display: flex; gap: 40px; align-items: flex-start; justify-content: center; width: 100%;">
             <div style="flex: 1; min-width: 250px;">
-              <img src="https://i.imgur.com/jNqzMGd.jpg" alt="Dr. Bernardo Morales" style="width: 100%; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+              <img src="https://i.imgur.com/jNqzMGd.jpg" alt="Dr. Bernardo Morales" style="width: 100%; border-radius: 4px;">
             </div>
             <div style="flex: 1.5; font-size: 14px; line-height: 1.5; color: #000;">
               <b>Dr. Bernardo Morales</b><br><br>
@@ -381,7 +381,7 @@
       },
       equipo: {
         es: `
-          <div style="display: flex; gap: 60px;">
+          <div style="display: flex; gap: 60px; justify-content: center; width: 100%;">
             <div style="flex: 1; font-size: 14px; line-height: 1.5; color: #000;">
               <b>Dirección y Gestión</b><br><br>
               Director Médico — Bernardo Morales<br>
@@ -402,7 +402,7 @@
           </div>
         `,
         en: `
-          <div style="display: flex; gap: 60px;">
+          <div style="display: flex; gap: 60px; justify-content: center; width: 100%;">
             <div style="flex: 1; font-size: 14px; line-height: 1.5; color: #000;">
               <b>Management and Administration</b><br><br>
               Medical Director — Bernardo Morales<br>
@@ -425,7 +425,7 @@
       },
       compromiso: {
         es: `
-          <div style="display: flex; gap: 60px;">
+          <div style="display: flex; gap: 60px; justify-content: center; width: 100%;">
             <div style="flex: 1; font-size: 14px; line-height: 1.5; color: #000;">
               <b>Compromiso</b><br>
               Nuestra Misión es brindar servicios de anatomía patológica de alta calidad, seguros, oportunos y accesibles, apoyando el diagnóstico y tratamiento médico con tecnología de vanguardia, atención personalizada y un profundo compromiso humano. Nuestra labor está orientada tanto al sector público como privado, siempre poniendo al paciente en el centro.<br><br>
@@ -446,7 +446,7 @@
           </div>
         `,
         en: `
-          <div style="display: flex; gap: 60px;">
+          <div style="display: flex; gap: 60px; justify-content: center; width: 100%;">
             <div style="flex: 1; font-size: 14px; line-height: 1.5; color: #000;">
               <b>Commitment</b><br>
               Our Mission is to provide high-quality, safe, timely, and accessible pathological anatomy services, supporting medical diagnosis and treatment with cutting edge technology, personalized care and deep human commitment. Our work caters to both the public and private sectors, always putting the patient at the center.<br><br>
