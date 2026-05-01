@@ -6,6 +6,7 @@
 <meta name="description" content="Conozca al equipo e historia detrás de CEMESI. Nuestro compromiso e innovación tecnológica en el área de diagnóstico médico.">
 <meta name="keywords" content="CEMESI, Nosotros, equipo médico, tecnología, compromiso, Dr. Bernardo Morales, salud, Providencia">
 <title>Nosotros - CEMESI</title>
+<link rel="icon" type="image/png" href="https://i.imgur.com/EDcBZn6.png">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -105,7 +106,7 @@
     display: flex;
     justify-content: center; 
     align-items: flex-start; 
-    padding: 10vh 40px 40px 40px;
+    padding: min(5vh, 40px) 40px 10px 40px;
     gap: 60px; 
   }
   
@@ -134,7 +135,7 @@
     pointer-events: none;
     flex-direction: column;
     width: 880px;
-    align-items: center;
+    align-items: flex-start;
     transition: opacity 0.4s ease;
   }
   .nosotros-content.active {
@@ -144,8 +145,17 @@
   }
   
   .nosotros-content div {
-    font-size: clamp(11px, 1.5vh, 15px) !important;
-    line-height: 1.4 !important;
+    font-size: clamp(10px, 1.35vh, 14px) !important;
+    line-height: 1.3 !important;
+  }
+  
+  .nosotros-content .direccion-text {
+    font-size: clamp(16px, 2.2vh, 23px) !important; 
+    line-height: 1.5 !important;
+  }
+  .nosotros-content .direccion-text b {
+    font-size: clamp(18px, 2.4vh, 25px) !important; 
+    margin-top: 0;
   }
   
   .nosotros-content b {
@@ -155,7 +165,7 @@
   }
   
   .nosotros-content img {
-    max-height: 38vh !important;
+    max-height: 28vh !important;
     object-fit: contain !important;
   }
   /* Footer */
@@ -359,7 +369,7 @@
             <div style="flex: 1.5; min-width: 375px;">
               <img src="https://i.imgur.com/jNqzMGd.jpg" alt="Dr. Bernardo Morales" style="width: 100%; border-radius: 4px;">
             </div>
-            <div style="flex: 1.5; font-size: 14px; line-height: 1.5; color: #000;">
+            <div class="direccion-text" style="flex: 1.5; color: #000;">
               <b>Dr. Bernardo Morales</b><br><br>
               El Dr. Bernardo Morales se desempeña como Director de CEMESI, liderando con compromiso, ética y excelencia el desarrollo de servicios médicos especializados.<br><br>
               Con una sólida trayectoria profesional en Chile y una amplia experiencia en el ámbito clínico y científico, el Dr. Morales ha orientado su labor hacia la innovación, la calidad en la atención y la implementación de tecnologías avanzadas en beneficio de los pacientes.<br><br>
@@ -372,7 +382,7 @@
             <div style="flex: 1.5; min-width: 375px;">
               <img src="https://i.imgur.com/jNqzMGd.jpg" alt="Dr. Bernardo Morales" style="width: 100%; border-radius: 4px;">
             </div>
-            <div style="flex: 1.5; font-size: 14px; line-height: 1.5; color: #000;">
+            <div class="direccion-text" style="flex: 1.5; color: #000;">
               <b>Dr. Bernardo Morales</b><br><br>
               Dr. Bernardo Morales serves as Director of CEMESI, leading with commitment, ethics, and excellence in the development of specialized medical services.<br><br>
               With a solid professional trajectory in Chile and extensive experience in the clinical and scientific fields, Dr. Morales has focused his work on innovation, quality of care, and the implementation of advanced technologies for the benefit of patients.<br><br>
