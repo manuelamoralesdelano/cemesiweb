@@ -104,8 +104,8 @@
     background-color: rgba(255, 255, 255, 0.85);
     display: flex;
     justify-content: center; 
-    align-items: center; 
-    padding: 60px 40px;
+    align-items: flex-start; 
+    padding: min(5vh, 40px) 40px 10px 40px;
   }
   .convenios-grid {
     display: flex;
@@ -237,6 +237,25 @@
     border: none;
     width: 100%;
     height: 100%;
+  }
+  /* --- RESPONSIVE MOBILE & TABLET --- */
+  @media (max-width: 900px) {
+    body { overflow-y: auto !important; }
+    
+    header { flex-direction: column; height: auto; padding: 20px; gap: 20px; }
+    .header-left { flex-direction: column; align-items: center; gap: 20px; }
+    nav.main-nav { flex-wrap: wrap; justify-content: center; gap: 20px; top: 0; }
+    .lang-switch { align-self: center; top: 0; }
+    
+    footer { flex-direction: column; align-items: center; text-align: center; gap: 30px; padding: 30px 20px; }
+    .footer-qr { margin-right: 0; }
+    .footer-col { margin-right: 0; }
+    .contact-item { justify-content: center; }
+    .modal-content { width: 95%; height: 60%; }
+    
+    .convenios-overlay { padding: 40px 20px !important; }
+    .convenios-grid { gap: 30px !important; justify-content: center !important; display: flex !important; flex-wrap: wrap !important; }
+    .convenio-link { width: 40% !important; min-width: 130px; }
   }
 </style>
 </head>
