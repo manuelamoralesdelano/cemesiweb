@@ -146,19 +146,28 @@
   }
   
   .nosotros-content div {
-    font-size: clamp(11px, 1.5vh, 15px) !important; 
-    line-height: 1.4 !important;
+    font-size: clamp(11px, 1.5vh, 15px); 
+    line-height: 1.4;
   }
   
   .nosotros-content b {
-    font-size: clamp(12px, 1.6vh, 17px) !important; 
+    font-size: clamp(12px, 1.6vh, 17px); 
     display: inline-block;
     margin-top: 10px;
   }
   
+  .direccion-text { font-size: clamp(15px, 1.9vh, 21px) !important; line-height: 1.4 !important; }
+  .direccion-text b { font-size: clamp(17px, 2.1vh, 24px) !important; }
+  
+  .equipo-text { font-size: clamp(16px, 1.95vh, 19.5px) !important; line-height: 1.45 !important; }
+  .equipo-text b { font-size: clamp(18px, 2.1vh, 22.1px) !important; }
+  
+  .compromiso-text { font-size: clamp(13px, 1.5vh, 15.5px) !important; line-height: 1.4 !important; }
+  .compromiso-text b { font-size: clamp(15px, 1.7vh, 17.5px) !important; }
+  
   .nosotros-content img {
-    max-height: 28vh !important;
-    object-fit: contain !important;
+    border-radius: 4px;
+    width: 100% !important;
   }
   /* Footer */
   footer {
@@ -357,11 +366,11 @@
     const nosotrosData = {
       direccion: {
         es: `
-          <div style="display: flex; gap: 40px; align-items: stretch; justify-content: center; width: 100%;">
-            <div style="flex: 1.5; min-width: 375px;">
-              <img src="https://i.imgur.com/jNqzMGd.jpg" alt="Dr. Bernardo Morales" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
+          <div style="display: flex; gap: 40px; align-items: center; justify-content: center; width: 100%; height: 100%; margin: auto 0;">
+            <div style="flex: 1; min-width: 350px;">
+              <img src="https://i.imgur.com/jNqzMGd.jpg" alt="Dr. Bernardo Morales" style="width: 100%; max-height: 55vh; object-fit: contain; border-radius: 4px; display: block;">
             </div>
-            <div class="direccion-text" style="flex: 1.5; color: #000;">
+            <div class="direccion-text" style="flex: 1.5; color: #000; display: flex; flex-direction: column; justify-content: center; text-align: left;">
               <b>Dr. Bernardo Morales</b><br><br>
               El Dr. Bernardo Morales se desempeña como Director de CEMESI, liderando con compromiso, ética y excelencia el desarrollo de servicios médicos especializados.<br><br>
               Con una sólida trayectoria profesional en Chile y una amplia experiencia en el ámbito clínico y científico, el Dr. Morales ha orientado su labor hacia la innovación, la calidad en la atención y la implementación de tecnologías avanzadas en beneficio de los pacientes.<br><br>
@@ -370,11 +379,11 @@
           </div>
         `,
         en: `
-          <div style="display: flex; gap: 40px; align-items: stretch; justify-content: center; width: 100%; height: 100%;">
-            <div style="flex: 1.5; min-width: 375px;">
-              <img src="https://i.imgur.com/jNqzMGd.jpg" alt="Dr. Bernardo Morales" style="width: 100%; height: 100%; object-fit: cover; border-radius: 4px;">
+          <div style="display: flex; gap: 40px; align-items: center; justify-content: center; width: 100%; height: 100%; margin: auto 0;">
+            <div style="flex: 1; min-width: 350px;">
+              <img src="https://i.imgur.com/jNqzMGd.jpg" alt="Dr. Bernardo Morales" style="width: 100%; max-height: 55vh; object-fit: contain; border-radius: 4px; display: block;">
             </div>
-            <div class="direccion-text" style="flex: 1.5; color: #000; display: flex; flex-direction: column; justify-content: center;">
+            <div class="direccion-text" style="flex: 1.5; color: #000; display: flex; flex-direction: column; justify-content: center; text-align: left;">
               <b>Dr. Bernardo Morales</b><br><br>
               Dr. Bernardo Morales serves as Director of CEMESI, leading with commitment, ethics, and excellence in the development of specialized medical services.<br><br>
               With a solid professional trajectory in Chile and extensive experience in the clinical and scientific fields, Dr. Morales has focused his work on innovation, quality of care, and the implementation of advanced technologies for the benefit of patients.<br><br>
@@ -386,7 +395,7 @@
       equipo: {
         es: `
           <div style="display: flex; gap: 80px; justify-content: center; width: 100%; height: 100%; text-align: center; align-items: center;">
-            <div style="flex: 1; font-size: 14px; line-height: 1.5; color: #000;">
+            <div class="equipo-text" style="flex: 1; color: #000;">
               <b>Dirección y Gestión</b><br><br>
               Director Médico — Bernardo Morales<br>
               <i>Médico – Cirujano, Universidad de Concepción 1987, especialista Anátomo-Patólogo, Pontificia Universidad Católica de Chile 1991.</i><br><br>
@@ -397,7 +406,7 @@
               Técnico de Laboratorio — Diego Castro<br><br>
               Auxiliar de Laboratorio — Daniela Soto
             </div>
-            <div style="flex: 1; font-size: 14px; line-height: 1.5; color: #000;">
+            <div class="equipo-text" style="flex: 1; color: #000;">
               <b>Área Administrativa</b><br><br>
               Recepción y Admisión — Valentina Díaz<br><br>
               Asistente Administrativo — José Martínez<br><br>
@@ -407,7 +416,7 @@
         `,
         en: `
           <div style="display: flex; gap: 80px; justify-content: center; width: 100%; height: 100%; text-align: center; align-items: center;">
-            <div style="flex: 1; font-size: 14px; line-height: 1.5; color: #000;">
+            <div class="equipo-text" style="flex: 1; color: #000;">
               <b>Management and Administration</b><br><br>
               Medical Director — Bernardo Morales<br>
               <i>Medical Surgeon, University of Concepción 1987, Anatomic Pathologist specialist, Pontifical Catholic University of Chile 1991.</i><br><br>
@@ -418,7 +427,7 @@
               Laboratory Technician — Diego Castro<br><br>
               Laboratory Assistant — Daniela Soto
             </div>
-            <div style="flex: 1; font-size: 14px; line-height: 1.5; color: #000;">
+            <div class="equipo-text" style="flex: 1; color: #000;">
               <b>Administrative Area</b><br><br>
               Reception and Admission — Valentina Díaz<br><br>
               Administrative Assistant — José Martínez<br><br>
@@ -430,7 +439,7 @@
       compromiso: {
         es: `
           <div style="display: flex; gap: 60px; justify-content: center; width: 100%; height: 100%; align-items: center;">
-            <div style="flex: 1; font-size: 14px; line-height: 1.5; color: #000;">
+            <div class="compromiso-text" style="flex: 1; color: #000;">
               <b>Compromiso</b><br>
               Nuestra Misión es brindar servicios de anatomía patológica de alta calidad, seguros, oportunos y accesibles, apoyando el diagnóstico y tratamiento médico con tecnología de vanguardia, atención personalizada y un profundo compromiso humano. Nuestra labor está orientada tanto al sector público como privado, siempre poniendo al paciente en el centro.<br><br>
               Nuestra visión es consolidarnos como un laboratorio de referencia a nivel nacional, reconocido por su excelencia técnica, la calidez en la atención y un firme compromiso ético con pacientes, profesionales de la salud e instituciones.<br><br>
@@ -439,7 +448,7 @@
               En Cemesi nos aseguramos de que nuestros procesos sean ágiles y eficientes. Las biopsias rutinarias tienen, en promedio, un tiempo de entrega de entre 4 y 7 días desde su ingreso al laboratorio.<br>
               Si se requieren exámenes especiales o más específicos, el tiempo puede extenderse hasta 15 días. En todos los casos, informamos oportunamente a los pacientes sobre cualquier posible demora.
             </div>
-            <div style="flex: 1; font-size: 14px; line-height: 1.5; color: #000;">
+            <div class="compromiso-text" style="flex: 1; color: #000;">
               <b>Clientes particulares</b><br>
               Puede enviar sus muestras a nuestras instalaciones y, una vez procesado el examen, tiene la opción de retirarlo directamente en nuestro laboratorio.<br><br>
               <b>Clientes institucionales</b><br>
@@ -451,7 +460,7 @@
         `,
         en: `
           <div style="display: flex; gap: 60px; justify-content: center; width: 100%; height: 100%; align-items: center;">
-            <div style="flex: 1; font-size: 14px; line-height: 1.5; color: #000;">
+            <div class="compromiso-text" style="flex: 1; color: #000;">
               <b>Commitment</b><br>
               Our Mission is to provide high-quality, safe, timely, and accessible pathological anatomy services, supporting medical diagnosis and treatment with cutting edge technology, personalized care and deep human commitment. Our work caters to both the public and private sectors, always putting the patient at the center.<br><br>
               Our vision is to consolidate as a reference laboratory nationwide, recognized for its technical excellence, warmth in care, and a firm ethical commitment to patients, health professionals, and institutions.<br><br>
@@ -460,7 +469,7 @@
               At CEMESI we ensure that our processes are fast and efficient. Routine biopsies take an average delivery time of 4 to 7 days from their admission to the laboratory.<br>
               If special or more specific exams are required, time can extend up to 15 days. In all cases, we inform patients promptly about any possible delay.
             </div>
-            <div style="flex: 1; font-size: 14px; line-height: 1.5; color: #000;">
+            <div class="compromiso-text" style="flex: 1; color: #000;">
               <b>Private clients</b><br>
               You can send your samples to our facilities and, once the exam is processed, you have the option to pick it up directly in our laboratory.<br><br>
               <b>Institutional clients</b><br>
