@@ -33,6 +33,7 @@
     height: 100%;
     padding-bottom: 5px;
   }
+
   .logo-container {
     display: flex;
     align-items: center;
@@ -48,6 +49,7 @@
     position: relative;
     top: 5px; 
   }
+
   /* Navigation */
   nav.main-nav {
     display: flex;
@@ -63,6 +65,7 @@
     padding-bottom: 2px;
     transition: text-shadow 0.3s ease;
   }
+
   nav.main-nav a:hover, nav.main-nav a.active-link {
     text-shadow: 0.5px 0 0 currentcolor, -0.5px 0 0 currentcolor;
   }
@@ -127,6 +130,7 @@
   .services-sidebar a.selected-service {
     text-shadow: 0.5px 0 0 currentcolor, -0.5px 0 0 currentcolor;
   }
+
   /* Center Content Area */
   .services-content-col {
     display: flex;
@@ -156,6 +160,8 @@
     line-height: 1.5;
   }
   
+
+
   /* Right Contact Area */
   .services-contact-col {
     display: flex;
@@ -174,6 +180,7 @@
     opacity: 1;
     pointer-events: auto;
   }
+
   /* Footer */
   footer {
     display: flex;
@@ -194,12 +201,14 @@
   .footer-col {
     margin-right: 60px;
   }
+
   .contact-col {
     display: flex;
     flex-direction: column;
     gap: 8px;
     color: #6a6a6a;
   }
+
   .contact-item {
     display: flex;
     align-items: center;
@@ -214,6 +223,7 @@
   .contact-item a:hover {
     text-decoration: underline;
   }
+
   .address-col a {
     text-decoration: none;
     color: #6a6a6a;
@@ -237,6 +247,7 @@
     .footer-qr { margin-right: 0; }
     .footer-col { margin-right: 0; }
     .contact-item { justify-content: center; }
+
     .modal-content { width: 95%; height: 60%; }
     
     .services-overlay { flex-direction: column !important; align-items: center !important; padding: 40px 20px !important; height: auto !important; }
@@ -249,22 +260,27 @@
 </style>
 </head>
 <body>
+
   <header>
     <div class="header-left">
-      <a href="index.html" class="logo-container" aria-label="CEMESI Inicio">
+            <a href="index.html" class="logo-container" aria-label="CEMESI Inicio" style="display: flex; align-items: center; gap: 15px; text-decoration: none;">
         <img src="https://i.imgur.com/EDcBZn6.png" alt="Logo CEMESI" class="logo-img">
+        <span style="font-size: 55px; font-weight: bold; color: #6a6a6a; font-family: Helvetica, sans-serif; line-height: 1; margin-top: 5px;">cemesi</span>
       </a>
-      <nav class="main-nav">
-        <!-- Servicios will be bold since we are on this page -->
-        <a href="servicios.html" class="active-link" data-translate="servicios">Servicios</a>
+
+            <nav class="main-nav">
         <a href="nosotros.html" data-translate="nosotros">Nosotros</a>
-        <a href="convenios.html" data-translate="convenios">Convenios</a>
+        <a href="servicios.html" class="active-link" data-translate="servicios">Servicios</a>
+        <a href="faq.html" data-translate="faq">FAQ</a>
+        <a href="noticias.html" data-translate="noticias">Noticias</a>
       </nav>
     </div>
+
     <div class="lang-switch">
       <span id="lang-es" class="active-lang">ESP</span> / <span id="lang-en">ENG</span>
     </div>
   </header>
+
   <main class="hero services-page">
     <div class="services-overlay">
       
@@ -279,16 +295,19 @@
         <a href="#" class="service-link" data-id="biologia_celular"><span data-translate="biologia_celular">Biología Celular</span></a>
         <a href="#" class="service-link" data-id="peritaje_forense"><span data-translate="peritaje_forense">Peritaje Forense</span></a>
         <a href="#" class="service-link" data-id="medicina_regenerativa"><span data-translate="medicina_regenerativa">Medicina Regenerativa</span></a>
-        <a href="#" class="service-link" data-id="criopreservacion"><span data-translate="criopreservacion">Criopreservación</span></a>
+                <a href="#" class="service-link" data-id="criopreservacion"><span data-translate="criopreservacion">Criopreservación</span></a>
+        <a href="#" class="service-link" data-id="estudio_genetico"><span data-translate="estudio_genetico">Estudio Genético</span></a>
       </div>
+
       <!-- Main Center Image / Text Content -->
       <div class="services-content-col" id="servicesContent">
         <img id="serviceImg" src="" alt="Imagen de Servicio">
         <div class="services-text" id="serviceText"></div>
       </div>
-      <!-- Right Contact Info shown when a service is clicked -->
+
+            <!-- Right Contact Info shown when a service is clicked -->
       <div class="services-contact-col" id="servicesContact">
-        <p data-translate="contact_info">Para más información o contratación de servicios, no dude en contactarnos.</p>
+        <a href="#" style="background-color: #6a6a6a; color: #fff; padding: 15px 20px; text-align: center; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 16px; margin-bottom: 20px; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#555'" onmouseout="this.style.backgroundColor='#6a6a6a'">Ver tu diagnostico online Aqui</a>
         <div class="contact-item">
           <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
           <a href="tel:+56222075895">+56 222 07 58 95</a>
@@ -298,6 +317,7 @@
           <a href="mailto:secretaria@cemesi.cl">secretaria@cemesi.cl</a>
         </div>
       </div>
+    <img src="https://i.imgur.com/SpJaJBO.png" alt="Logo CEMESI Footer" style="width: 70px; height: 70px; object-fit: contain; margin-left: auto; margin-right: 25px;">
       
     </div>
   </main>
@@ -327,7 +347,9 @@
         <a href="mailto:secretaria@cemesi.cl">secretaria@cemesi.cl</a>
       </div>
     </div>
+    <img src="https://i.imgur.com/SpJaJBO.png" alt="Logo CEMESI Footer" style="width: 70px; height: 70px; object-fit: contain; margin-left: auto; margin-right: 25px;">
   </footer>
+
   <script>
     const generalTranslations = {
       es: {
@@ -344,6 +366,8 @@
         peritaje_forense: "Peritaje Forense",
         medicina_regenerativa: "Medicina Regenerativa",
         criopreservacion: "Criopreservación",
+        estudio_genetico: "Estudio Genético",
+        estudio_genetico: "Genetic Study",
         contact_info: "Para más información o contratación de servicios, no dude en contactarnos.",
         horarios: "Horarios",
         dias: "Lunes a Viernes"
@@ -362,11 +386,14 @@
         peritaje_forense: "Forensic Expertise",
         medicina_regenerativa: "Regenerative Medicine",
         criopreservacion: "Cryopreservation",
+        estudio_genetico: "Estudio Genético",
+        estudio_genetico: "Genetic Study",
         contact_info: "For more information or to contract services, please don't hesitate to contact us.",
         horarios: "Business Hours",
         dias: "Monday to Friday"
       }
     };
+
     const servicesData = {
       histopatologia: {
         es: "<b>▪️ Histopatología:</b><br>Análisis de tejidos a través de estudios microscópicos, permitiendo establecer diagnósticos clínicos precisos y fundamentar decisiones terapéuticas, siempre con los más altos estándares de calidad y tecnología.",
@@ -408,20 +435,28 @@
         en: "<b>▪️ Regenerative Medicine:</b><br>Combination of cell therapy with genetic and tissue engineering, offering innovative solutions to regenerate tissues damaged by aging or trauma.",
         img: "https://i.imgur.com/0v0fiBO.jpg"
       },
-      criopreservacion: {
+            criopreservacion: {
         es: "<b>▪️ Laboratorio de criopreservación:</b><br>Proceso especializado que congela células, tejidos u órganos a -196 ºC con nitrógeno líquido, contando con bancos de tumores, células y tejidos para su conservación a largo plazo.",
         en: "<b>▪️ Cryopreservation Laboratory:</b><br>Specialized process that freezes cells, tissues, or organs at -196ºC with liquid nitrogen, maintaining banks of tumors, cells, and tissues for long-term storage.",
         img: "https://i.imgur.com/2lU10Ig.jpg"
+      },
+      estudio_genetico: {
+        es: "<b>▪️ Estudio genético:</b><br>Evaluación de la información genética mediante tecnologías avanzadas para identificar alteraciones, predecir riesgos y personalizar tratamientos con la más alta precisión.",
+        en: "<b>▪️ Genetic Study:</b><br>Evaluation of genetic information using advanced technologies to identify alterations, predict risks, and personalize treatments with the highest precision.",
+        img: "https://i.imgur.com/ZHbIrNp.jpg"
       }
     };
+
     let currentLang = 'es';
     let currentServiceId = null;
+
     const btnEs = document.getElementById('lang-es');
     const btnEn = document.getElementById('lang-en');
     const contentCol = document.getElementById('servicesContent');
     const contactCol = document.getElementById('servicesContact');
     const serviceImg = document.getElementById('serviceImg');
     const serviceText = document.getElementById('serviceText');
+
     function setLang(lang) {
       currentLang = lang;
       
@@ -433,6 +468,7 @@
         btnEn.classList.add('active-lang');
         btnEs.classList.remove('active-lang');
       }
+
       // Update general DOM texts
       document.querySelectorAll('[data-translate]').forEach(el => {
         const key = el.getAttribute('data-translate');
@@ -440,6 +476,7 @@
           el.textContent = generalTranslations[lang][key];
         }
       });
+
       // Update specific service text if one is open
       if (currentServiceId && servicesData[currentServiceId]) {
         serviceText.innerHTML = servicesData[currentServiceId][lang];
@@ -447,30 +484,39 @@
         document.title = generalTranslations[lang][currentServiceId] + " - CEMESI";
       }
     }
+
     function loadService(id) {
       const data = servicesData[id];
       if (!data) return;
+
       currentServiceId = id;
+
       // Sidebar visual update
       document.querySelectorAll('.service-link').forEach(l => l.classList.remove('selected-service'));
       const activeLink = document.querySelector(`[data-id="${id}"]`);
       if(activeLink) activeLink.classList.add('selected-service');
+
       // Update content
       serviceImg.src = data.img;
       serviceText.innerHTML = data[currentLang];
+
       contentCol.classList.add('active');
       contactCol.classList.add('active');
+
       // URL Search Param Update (for SEO and sharing)
       const url = new URL(window.location);
       url.searchParams.set('servicio', id);
       window.history.pushState({}, '', url);
+
       // Title update
       document.title = generalTranslations[currentLang][id] + " - CEMESI";
     }
+
     document.addEventListener('DOMContentLoaded', () => {
       // Bind language switchers
       btnEs.addEventListener('click', () => setLang('es'));
       btnEn.addEventListener('click', () => setLang('en'));
+
       // Bind service clicks
       document.querySelectorAll('.service-link').forEach(link => {
         link.addEventListener('click', (e) => {
@@ -478,6 +524,7 @@
           loadService(link.getAttribute('data-id'));
         });
       });
+
       // Check URL parameters for direct loads
       const urlParams = new URLSearchParams(window.location.search);
       let initService = urlParams.get('servicio');
@@ -486,6 +533,7 @@
       }
       loadService(initService);
     });
+
     // Handle back/forward navigation within the app for URL params
     window.addEventListener('popstate', () => {
       const urlParams = new URLSearchParams(window.location.search);
@@ -496,5 +544,6 @@
       loadService(id);
     });
   </script>
+
 </body>
 </html>
