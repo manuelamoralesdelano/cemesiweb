@@ -23,19 +23,16 @@
     justify-content: space-between;
     align-items: center;
     padding: 15px 40px;
+    align-items: flex-end;
+    padding: 15px 40px 20px 40px;
     height: 90px;
   }
   
-  
-  .logo-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
   }
   
   .logo-img {
     height: 70px;
+    height: 42px;
     width: auto;
     object-fit: contain;
     margin-bottom: 0px;
@@ -48,14 +45,17 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    align-items: flex-end;
     position: relative;
     top: -5px;
+    top: 0;
   }
   nav.main-nav a {
     text-decoration: none;
     color: #6a6a6a;
     font-size: 16px;
     padding-bottom: 2px;
+    padding-bottom: 0;
     transition: text-shadow 0.3s ease;
   }
   /* Smooth transition to bold hover effect using text-shadow */
@@ -67,95 +67,92 @@
     font-size: 15px;
     font-weight: normal; 
     padding-bottom: 5px;
+    padding-bottom: 0;
     align-self: flex-end;
     color: #6a6a6a;
     position: relative;
     top: -5px;
+    top: 0;
   }
   .lang-switch span {
     cursor: pointer;
-    transition: color 0.2s;
-  }
-  .lang-switch span:hover {
-    color: #555;
-  }
-  .lang-switch span.active-lang {
-    font-weight: normal; 
-    text-decoration: underline;
-  }
-  
-  /* Main Content */
-  .hero {
-    flex-grow: 1;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
-  
-  
-  /* Slider */
-  .slider {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0; left: 0;
-    overflow: hidden;
-  }
-  .slide {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0; left: 0;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-  }
-  .slide.active {
-    opacity: 1;
-    z-index: 2;
   }
   .slide-content {
     background-color: rgba(255, 255, 255, 0.82);
     padding: 25px 60px;
-    padding: 15px 40px;
+    padding: 8px 20px;
     text-align: center;
     display: inline-block;
-    opacity: 0;
-  }
-  .slide.active .slide-content {
-    animation: fadeInContent 1s ease-in-out 1s forwards;
-  }
-  .slide.active .slide-logo {
-    animation: fadeInContent 1s ease-in-out 1s forwards;
-  }
-  @keyframes fadeInContent {
-    to { opacity: 1; }
   }
   .slide-link {
     font-weight: 400;
     font-size: 33px; 
-    font-size: 55px; 
     color: #6a6a6a;
+    font-size: 55px; 
+    color: #2b7dbe;
     margin: 0;
     letter-spacing: -0.5px;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .slide-link:hover {
+    color: #333;
+    color: #1a4c74;
+    text-decoration: underline;
+  }
+  .slider-arrows {
+  }
+  .arrow {
+    cursor: pointer;
+    font-size: 40px;
+    font-size: 25px;
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(0,0,0,0.3);
+    padding: 10px 20px;
+    border-radius: 5px;
+    padding: 10px;
+    user-select: none;
+    pointer-events: auto;
+    transition: background 0.3s;
+    transition: color 0.3s;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5); /* subtle shadow for visibility */
+  }
+  .arrow:hover {
+    background: rgba(0,0,0,0.6);
+    color: white;
+  }
+.hero-banner {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    align-items: flex-end;
+    position: relative;
+    top: -5px;
+    top: 0;
+  }
+    .lang-switch { align-self: center; top: 0; }
+    
+  <header>
+    <a href="index.html" class="logo-container" aria-label="CEMESI Inicio" style="text-decoration: none;">
+      <img src="https://i.imgur.com/7C1C5rk.png" alt="Logo CEMESI" class="logo-img" style="height: 70px; width: auto;">
+      <img src="https://i.imgur.com/7C1C5rk.png" alt="Logo CEMESI" class="logo-img" style="height: 42px; width: auto;">
+    </a>
+    <nav class="main-nav">
+        <a href="nosotros.html" data-translate="nosotros">Nosotros</a>
     <main class="hero">
     <div class="slider">
       <div class="slide active" style="background-image: url('https://i.imgur.com/utSPpvj.jpg');">
+      <div class="slide active" style="background-image: url('https://i.imgur.com/2lU10Ig.jpg');">
         <div class="slide-content">
           <img src="https://i.imgur.com/SpJaJBO.png" alt="CEMESI" style="height: 100px;">
         </div>
-        <img src="https://i.imgur.com/7C1C5rk.png" alt="CEMESI" class="slide-logo" style="height: 120px; opacity: 0;">
       </div>
       <div class="slide" style="background-image: url('https://i.imgur.com/2lU10Ig.jpg');">
         <div class="slide-content">
+          <a href="servicios.html" class="slide-link">Medicina de Precisión</a>
+        </div>
+      </div>
     function resetInterval() {
       clearInterval(slideInterval);
       slideInterval = setInterval(nextSlide, 4000);
@@ -166,33 +163,5 @@
       slideInterval = setInterval(nextSlide, 12000);
     });
     // Modal Logic
-    document.addEventListener('DOMContentLoaded', () => {
-      btnEs.addEventListener('click', () => setLang('es'));
-      btnEn.addEventListener('click', () => setLang('en'));
-      const addressLink = document.getElementById('address-link');
-      const mapModal = document.getElementById('mapModal');
-      const closeMap = document.getElementById('closeMap');
-      addressLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        mapModal.classList.add('active');
-      });
-      closeMap.addEventListener('click', () => {
-        mapModal.classList.remove('active');
-      });
-      mapModal.addEventListener('click', (e) => {
-        if (e.target === mapModal) {
-          mapModal.classList.remove('active');
-        }
-      });
-      
-      // Allow escape key to close map
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && mapModal.classList.contains('active')) {
-          mapModal.classList.remove('active');
-        }
-      });
-    });
-  </script>
 </body>
 </html>
-
