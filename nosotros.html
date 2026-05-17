@@ -13,7 +13,8 @@
     font-family: Helvetica, Arial, sans-serif;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    height: 100vh;
+    max-height: 100vh;
     color: #000;
     overflow-y: hidden;
   }
@@ -22,18 +23,12 @@
   header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
+    align-items: flex-end;
+    padding: 15px 40px 20px 40px;
     height: 90px;
   }
   
-  .header-left {
-    display: flex;
-    align-items: flex-end;
-    gap: 40px;
-    height: 100%;
-    padding-bottom: 5px;
-  }
+  
 
   .logo-container {
     display: flex;
@@ -43,27 +38,26 @@
   }
   
   .logo-img {
-    height: 70px;
+    height: 42px;
     width: auto;
     object-fit: contain;
     margin-bottom: 0px;
-    position: relative;
-    top: 5px; 
   }
 
   /* Navigation */
   nav.main-nav {
+    flex-grow: 1;
     display: flex;
-    gap: 85px;
-    align-items: center;
+    justify-content: space-evenly;
+    align-items: flex-end;
     position: relative;
-    top: -5px;
+    top: 0;
   }
   nav.main-nav a {
     text-decoration: none;
     color: #6a6a6a;
     font-size: 16px;
-    padding-bottom: 2px;
+    padding-bottom: 0;
     transition: text-shadow 0.3s ease;
   }
 
@@ -74,11 +68,11 @@
   .lang-switch {
     font-size: 15px;
     font-weight: normal; 
-    padding-bottom: 5px;
+    padding-bottom: 0;
     align-self: flex-end;
     color: #6a6a6a;
     position: relative;
-    top: -5px;
+    top: 0;
   }
   .lang-switch span {
     cursor: pointer;
@@ -93,24 +87,26 @@
   }
   
   /* Main Content */
-  .hero.nosotros-page {
+  .hero {
     flex-grow: 1;
     background-image: url('https://i.imgur.com/utSPpvj.jpg');
     background-size: cover;
     background-position: center;
+    overflow: hidden;
     position: relative;
     display: flex;
   }
   
   .nosotros-overlay {
     flex-grow: 1;
+    overflow-y: auto;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.85); 
     display: flex;
     justify-content: center; 
-    align-items: flex-start; 
+    align-items: stretch; 
     padding: min(5vh, 40px) 40px 10px 40px;
-    gap: 40px; 
+    gap: 60px; 
   }
   
   /* Left Sidebar Links */
@@ -175,6 +171,30 @@
   .nosotros-content img {
     border-radius: 4px;
     width: 100% !important;
+  }
+
+  
+  .convenios-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+  .convenio-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    width: 120px;
+  }
+  .convenio-link:hover {
+    transform: scale(1.08);
+  }
+  .convenio-logo {
+    max-width: 100%;
+    height: auto;
+    max-height: 60px;
+    object-fit: contain;
   }
 
   /* Footer */
@@ -287,8 +307,15 @@
     body { overflow-y: auto !important; }
     
     header { flex-direction: column; height: auto; padding: 20px; gap: 20px; }
-    .header-left { flex-direction: column; align-items: center; gap: 20px; }
-    nav.main-nav { flex-wrap: wrap; justify-content: center; gap: 20px; top: 0; }
+    
+    nav.main-nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    position: relative;
+    top: 0;
+  }
     .lang-switch { align-self: center; top: 0; }
     
     footer { flex-direction: column; align-items: center; text-align: center; gap: 30px; padding: 30px 20px; }
@@ -313,20 +340,15 @@
 <body>
 
   <header>
-    <div class="header-left">
-            <a href="index.html" class="logo-container" aria-label="CEMESI Inicio" style="display: flex; align-items: center; gap: 15px; text-decoration: none;">
-        <img src="https://i.imgur.com/EDcBZn6.png" alt="Logo CEMESI" class="logo-img">
-        <span style="font-size: 55px; font-weight: bold; color: #6a6a6a; font-family: Helvetica, sans-serif; line-height: 1; margin-top: 5px;">cemesi</span>
-      </a>
-
-            <nav class="main-nav">
+    <a href="index.html" class="logo-container" aria-label="CEMESI Inicio" style="text-decoration: none;">
+      <img src="https://i.imgur.com/7C1C5rk.png" alt="Logo CEMESI" class="logo-img" style="height: 42px; width: auto;">
+    </a>
+    <nav class="main-nav">
         <a href="nosotros.html" class="active-link" data-translate="nosotros">Nosotros</a>
         <a href="servicios.html" data-translate="servicios">Servicios</a>
         <a href="faq.html" data-translate="faq">FAQ</a>
         <a href="noticias.html" data-translate="noticias">Noticias</a>
       </nav>
-    </div>
-
     <div class="lang-switch">
       <span id="lang-es" class="active-lang">ESP</span> / <span id="lang-en">ENG</span>
     </div>
@@ -349,11 +371,11 @@
       </div>
 
       <!-- Right Column for Bernardo Morales -->
-      <div class="nosotros-right" style="width: 250px; flex-shrink: 0; display: flex; flex-direction: column; gap: 15px; align-items: flex-start;">
-        <img src="https://i.imgur.com/jNqzMGd.jpg" alt="Dr. Bernardo Morales" style="width: 100%; border-radius: 4px;">
-        <div style="color: #000; font-size: 13px; line-height: 1.5;">
-          <b style="font-size: 15px;">Dr. Bernardo Morales</b><br><br>
-          <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px;">
+      <div class="nosotros-right" style="width: 380px; flex-shrink: 0; display: flex; flex-direction: row; gap: 15px; align-items: flex-start;">
+        <img src="https://i.imgur.com/jNqzMGd.jpg" alt="Dr. Bernardo Morales" style="width: 220px; border-radius: 4px; object-fit: cover;">
+        <div style="color: #000; font-size: 11px; line-height: 1.4; flex: 1;">
+          <b style="font-size: 14px;">Dr. Bernardo Morales</b><br><br>
+          <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 8px;">
             <li>Director de CEMESI, liderando con compromiso, ética y excelencia.</li>
             <li>Sólida trayectoria profesional en Chile en el ámbito clínico y científico.</li>
             <li>Orientado a la innovación, la calidad en la atención y tecnologías avanzadas.</li>
@@ -411,8 +433,10 @@
         tab_porque_elegirnos: "Porque Elegirnos",
         tab_principios_valores: "Principios y Valores",
         tab_equipo: "Equipo",
-        tab_convenios: "Convenios"
-      },
+        tab_convenios: "Convenios",
+      
+        noticias: "Noticias",
+        faq: "FAQ",},
       en: {
         servicios: "Services",
         nosotros: "About Us",
@@ -422,55 +446,57 @@
         tab_porque_elegirnos: "Why Choose Us",
         tab_principios_valores: "Principles and Values",
         tab_equipo: "Team",
-        tab_convenios: "Agreements"
-      }
+        tab_convenios: "Agreements",
+      
+        noticias: "News",
+        faq: "FAQ",}
     };
 
         const nosotrosData = {
       porque_elegirnos: {
         es: `
-          <div style="display: flex; flex-direction: column; gap: 15px; color: #000; justify-content: center; height: 100%;">
-            <b>Por qué Elegirnos</b>
-            <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.5;">
-              <li><b>Experiencia:</b> 35 años de excelencia y precisión en diagnóstico médico.</li>
-              <li><b>Tecnología de Punta:</b> Equipamiento de última generación, como Illumina iSeq 2000.</li>
-              <li><b>Rapidez:</b> Procesos eficientes con resultados oportunos.</li>
-              <li><b>Confianza:</b> Compromiso ético con pacientes y profesionales de la salud.</li>
+          <div style="display: flex; flex-direction: column; gap: 15px; color: #000; justify-content: flex-start; height: 100%; padding-top: 20px;">
+            
+            <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 18px; line-height: 1.6;">
+              <li><b>Experiencia</b><br>35 años de excelencia y precisión en diagnóstico médico.</li>
+              <li><b>Tecnología de Punta</b><br>Equipamiento de última generación, como Illumina iSeq 2000.</li>
+              <li><b>Rapidez</b><br>Procesos eficientes con resultados oportunos.</li>
+              <li><b>Confianza</b><br>Compromiso ético con pacientes y profesionales de la salud.</li>
             </ul>
           </div>
         `,
         en: `
-          <div style="display: flex; flex-direction: column; gap: 15px; color: #000; justify-content: center; height: 100%;">
-            <b>Why Choose Us</b>
-            <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.5;">
-              <li><b>Experience:</b> 35 years of excellence and precision in medical diagnosis.</li>
-              <li><b>Cutting-edge Technology:</b> State-of-the-art equipment, like Illumina iSeq 2000.</li>
-              <li><b>Speed:</b> Efficient processes with timely results.</li>
-              <li><b>Trust:</b> Ethical commitment to patients and health professionals.</li>
+          <div style="display: flex; flex-direction: column; gap: 15px; color: #000; justify-content: flex-start; height: 100%; padding-top: 20px;">
+            
+            <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 18px; line-height: 1.6;">
+              <li><b>Experience</b><br>35 years of excellence and precision in medical diagnosis.</li>
+              <li><b>Cutting-edge Technology</b><br>State-of-the-art equipment, like Illumina iSeq 2000.</li>
+              <li><b>Speed</b><br>Efficient processes with timely results.</li>
+              <li><b>Trust</b><br>Ethical commitment to patients and health professionals.</li>
             </ul>
           </div>
         `
       },
       principios_valores: {
         es: `
-          <div style="display: flex; flex-direction: column; gap: 15px; color: #000; justify-content: center; height: 100%;">
-            <b>Principios y Valores</b>
-            <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.5;">
-              <li><b>Misión:</b> Brindar servicios de anatomía patológica de alta calidad, seguros, oportunos y accesibles.</li>
-              <li><b>Visión:</b> Consolidarnos como laboratorio de referencia a nivel nacional.</li>
-              <li><b>Transparencia:</b> Comunicación clara y resultados confiables.</li>
-              <li><b>Responsabilidad:</b> Entendiendo el impacto de cada diagnóstico médico.</li>
+          <div style="display: flex; flex-direction: column; gap: 15px; color: #000; justify-content: flex-start; height: 100%; padding-top: 20px;">
+            
+            <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 18px; line-height: 1.6;">
+              <li><b>Misión</b><br>Brindar servicios de anatomía patológica de alta calidad, seguros, oportunos y accesibles.</li>
+              <li><b>Visión</b><br>Consolidarnos como laboratorio de referencia a nivel nacional.</li>
+              <li><b>Transparencia</b><br>Comunicación clara y resultados confiables.</li>
+              <li><b>Responsabilidad</b><br>Entendiendo el impacto de cada diagnóstico médico.</li>
             </ul>
           </div>
         `,
         en: `
-          <div style="display: flex; flex-direction: column; gap: 15px; color: #000; justify-content: center; height: 100%;">
-            <b>Principles and Values</b>
-            <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.5;">
-              <li><b>Mission:</b> Provide high-quality, safe, timely, and accessible pathological anatomy services.</li>
-              <li><b>Vision:</b> Consolidate as a reference laboratory nationwide.</li>
-              <li><b>Transparency:</b> Clear communication and reliable results.</li>
-              <li><b>Responsibility:</b> Understanding the impact of each medical diagnosis.</li>
+          <div style="display: flex; flex-direction: column; gap: 15px; color: #000; justify-content: flex-start; height: 100%; padding-top: 20px;">
+            
+            <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 18px; line-height: 1.6;">
+              <li><b>Mission</b><br>Provide high-quality, safe, timely, and accessible pathological anatomy services.</li>
+              <li><b>Vision</b><br>Consolidate as a reference laboratory nationwide.</li>
+              <li><b>Transparency</b><br>Clear communication and reliable results.</li>
+              <li><b>Responsibility</b><br>Understanding the impact of each medical diagnosis.</li>
             </ul>
           </div>
         `
@@ -479,22 +505,22 @@
         es: `
           <div style="display: flex; gap: 40px; color: #000; justify-content: center; align-items: center; height: 100%;">
             <div style="flex: 1;">
-              <b>Dirección y Gestión</b>
-              <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; margin-top: 10px; font-size: 14px; line-height: 1.4;">
+              <b style="font-size: 18px; border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-bottom: 5px; display: inline-block;" style="font-size: 18px;">Dirección y Gestión</b>
+              <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; margin-top: 10px; font-size: 18px; line-height: 1.6;">
                 <li><b>Director Médico:</b> Bernardo Morales</li>
                 <li><b>Director Técnico:</b> Domingo Lizama</li>
               </ul>
               <br>
-              <b>Área Administrativa</b>
-              <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; margin-top: 10px; font-size: 14px; line-height: 1.4;">
+              <b style="font-size: 18px; border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-bottom: 5px; display: inline-block;" style="font-size: 18px;">Área Administrativa</b>
+              <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; margin-top: 10px; font-size: 18px; line-height: 1.6;">
                 <li><b>Recepción:</b> Valentina Díaz</li>
                 <li><b>Asistente Admin:</b> José Martínez</li>
                 <li><b>Finanzas:</b> Patricia Gómez</li>
               </ul>
             </div>
             <div style="flex: 1;">
-              <b>Soporte y Operaciones</b>
-              <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; margin-top: 10px; font-size: 14px; line-height: 1.4;">
+              <b style="font-size: 18px; border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-bottom: 5px; display: inline-block;" style="font-size: 18px;">Soporte y Operaciones</b>
+              <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; margin-top: 10px; font-size: 18px; line-height: 1.6;">
                 <li><b>Toma de Muestras:</b> Natalia Fuentes</li>
                 <li><b>Técnico Lab:</b> Diego Castro</li>
                 <li><b>Auxiliar Lab:</b> Daniela Soto</li>
@@ -505,22 +531,22 @@
         en: `
           <div style="display: flex; gap: 40px; color: #000; justify-content: center; align-items: center; height: 100%;">
             <div style="flex: 1;">
-              <b>Management</b>
-              <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; margin-top: 10px; font-size: 14px; line-height: 1.4;">
+              <b style="font-size: 18px; border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-bottom: 5px; display: inline-block;" style="font-size: 18px;">Management</b>
+              <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; margin-top: 10px; font-size: 18px; line-height: 1.6;">
                 <li><b>Medical Director:</b> Bernardo Morales</li>
                 <li><b>Technical Director:</b> Domingo Lizama</li>
               </ul>
               <br>
-              <b>Administration</b>
-              <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; margin-top: 10px; font-size: 14px; line-height: 1.4;">
+              <b style="font-size: 18px; border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-bottom: 5px; display: inline-block;" style="font-size: 18px;">Administration</b>
+              <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; margin-top: 10px; font-size: 18px; line-height: 1.6;">
                 <li><b>Reception:</b> Valentina Díaz</li>
                 <li><b>Admin Assistant:</b> José Martínez</li>
                 <li><b>Finance:</b> Patricia Gómez</li>
               </ul>
             </div>
             <div style="flex: 1;">
-              <b>Operations</b>
-              <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; margin-top: 10px; font-size: 14px; line-height: 1.4;">
+              <b style="font-size: 18px; border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-bottom: 5px; display: inline-block;" style="font-size: 18px;">Operations</b>
+              <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; margin-top: 10px; font-size: 18px; line-height: 1.6;">
                 <li><b>Sampling:</b> Natalia Fuentes</li>
                 <li><b>Lab Tech:</b> Diego Castro</li>
                 <li><b>Lab Assistant:</b> Daniela Soto</li>
@@ -531,35 +557,67 @@
       },
       convenios: {
         es: `
-          <div style="display: flex; flex-direction: column; gap: 15px; color: #000; justify-content: center; height: 100%;">
-            <b>Nuestros Convenios</b>
+          <div style="display: flex; flex-direction: column; gap: 15px; color: #000; justify-content: flex-start; height: 100%; padding-top: 20px;">
+            
             <p style="font-size: 15px;">Contamos con acuerdos estratégicos con diversas instituciones:</p>
-            <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.5; columns: 2;">
-              <li><b>Fonasa</b></li>
-              <li><b>Banmédica</b></li>
-              <li><b>IntegraMédica</b></li>
-              <li><b>Consalud</b></li>
-              <li><b>Colmena</b></li>
-              <li><b>Nueva Masvida</b></li>
-              <li><b>CruzBlanca</b></li>
-              <li><b>VidaTres</b></li>
-            </ul>
+            <div class="convenios-grid">
+              <a href="#" class="convenio-link" aria-label="Banmédica">
+                <img src="https://i.imgur.com/ayFDn8l.png" class="convenio-logo" alt="Logotipo Banmédica">
+              </a>
+              <a href="#" class="convenio-link" aria-label="IntegraMédica">
+                <img src="https://i.imgur.com/T1aKwxy.png" class="convenio-logo" alt="Logotipo IntegraMédica">
+              </a>
+              <a href="#" class="convenio-link" aria-label="Fonasa">
+                <img src="https://i.imgur.com/FjfbKiX.png" class="convenio-logo" alt="Logotipo Fonasa">
+              </a>
+              <a href="#" class="convenio-link" aria-label="Consalud">
+                <img src="https://i.imgur.com/bNFSZZY.png" class="convenio-logo" alt="Logotipo Consalud">
+              </a>
+              <a href="#" class="convenio-link" aria-label="Colmena">
+                <img src="https://i.imgur.com/zeeRR4s.png" class="convenio-logo" alt="Logotipo Colmena">
+              </a>
+              <a href="#" class="convenio-link" aria-label="Nueva Masvida">
+                <img src="https://i.imgur.com/2kA7nAy.png" class="convenio-logo" alt="Logotipo Nueva Masvida">
+              </a>
+              <a href="#" class="convenio-link" aria-label="CruzBlanca">
+                <img src="https://i.imgur.com/fcbkx2B.png" class="convenio-logo" alt="Logotipo CruzBlanca">
+              </a>
+              <a href="#" class="convenio-link" aria-label="VidaTres">
+                <img src="https://i.imgur.com/v6qkzDT.png" class="convenio-logo" alt="Logotipo VidaTres">
+              </a>
+            </div>
           </div>
         `,
         en: `
-          <div style="display: flex; flex-direction: column; gap: 15px; color: #000; justify-content: center; height: 100%;">
-            <b>Our Agreements</b>
+          <div style="display: flex; flex-direction: column; gap: 15px; color: #000; justify-content: flex-start; height: 100%; padding-top: 20px;">
+            
             <p style="font-size: 15px;">We have strategic agreements with various institutions:</p>
-            <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.5; columns: 2;">
-              <li><b>Fonasa</b></li>
-              <li><b>Banmédica</b></li>
-              <li><b>IntegraMédica</b></li>
-              <li><b>Consalud</b></li>
-              <li><b>Colmena</b></li>
-              <li><b>Nueva Masvida</b></li>
-              <li><b>CruzBlanca</b></li>
-              <li><b>VidaTres</b></li>
-            </ul>
+            <div class="convenios-grid">
+              <a href="#" class="convenio-link" aria-label="Banmédica">
+                <img src="https://i.imgur.com/ayFDn8l.png" class="convenio-logo" alt="Logotipo Banmédica">
+              </a>
+              <a href="#" class="convenio-link" aria-label="IntegraMédica">
+                <img src="https://i.imgur.com/T1aKwxy.png" class="convenio-logo" alt="Logotipo IntegraMédica">
+              </a>
+              <a href="#" class="convenio-link" aria-label="Fonasa">
+                <img src="https://i.imgur.com/FjfbKiX.png" class="convenio-logo" alt="Logotipo Fonasa">
+              </a>
+              <a href="#" class="convenio-link" aria-label="Consalud">
+                <img src="https://i.imgur.com/bNFSZZY.png" class="convenio-logo" alt="Logotipo Consalud">
+              </a>
+              <a href="#" class="convenio-link" aria-label="Colmena">
+                <img src="https://i.imgur.com/zeeRR4s.png" class="convenio-logo" alt="Logotipo Colmena">
+              </a>
+              <a href="#" class="convenio-link" aria-label="Nueva Masvida">
+                <img src="https://i.imgur.com/2kA7nAy.png" class="convenio-logo" alt="Logotipo Nueva Masvida">
+              </a>
+              <a href="#" class="convenio-link" aria-label="CruzBlanca">
+                <img src="https://i.imgur.com/fcbkx2B.png" class="convenio-logo" alt="Logotipo CruzBlanca">
+              </a>
+              <a href="#" class="convenio-link" aria-label="VidaTres">
+                <img src="https://i.imgur.com/v6qkzDT.png" class="convenio-logo" alt="Logotipo VidaTres">
+              </a>
+            </div>
           </div>
         `
       }
