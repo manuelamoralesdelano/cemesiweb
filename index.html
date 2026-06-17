@@ -309,49 +309,60 @@
 
   /* --- RESPONSIVE MOBILE & TABLET --- */
   @media (max-width: 1024px) {
-    body { overflow-y: auto !important; }
+    body { overflow-y: auto !important; height: auto !important; max-height: none !important; min-height: 100vh; }
     
-    header { flex-direction: column; height: auto; padding: 20px; gap: 20px; align-items: center; }
+    header { flex-direction: column; height: auto; padding: 20px; gap: 15px; align-items: center; }
     
     nav.main-nav {
-      flex-grow: 1;
+      flex-grow: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       position: relative;
       top: 0;
       flex-wrap: wrap;
-      gap: 15px 25px;
+      gap: 12px 20px;
     }
+    nav.main-nav a { font-size: 15px; }
     .lang-switch { align-self: center; top: 0; margin-top: 5px; }
     
-    footer { flex-direction: column; align-items: center; text-align: center; gap: 30px; padding: 30px 20px; }
-    .footer-qr { margin-right: 0; }
-    .footer-col { margin-right: 0; }
-    .contact-item { justify-content: center; }
+    .hero {
+      min-height: 450px !important;
+      height: 65vh !important;
+      flex-grow: 0 !important;
+      overflow: hidden !important;
+    }
     
     .hero-banner h1 { font-size: 23px; }
 
     .modal-content { width: 95%; height: 60%; }
 
-    /* Override slider text nowrap constraints to enable clean wrapping on mobile/tablet */
+    /* Override slider text to wrap vertically on small screens */
     .slide-content {
       white-space: normal !important;
       overflow: visible !important;
       text-overflow: clip !important;
-      width: 90% !important;
-      max-width: 550px !important;
-      padding: 10px 15px !important;
+      width: 85% !important;
+      max-width: 450px !important;
+      padding: 15px 20px !important;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     }
     .slide-link {
       white-space: normal !important;
       font-size: clamp(14px, 3.5vw, 24px) !important;
       line-height: 1.3 !important;
     }
-    /* Ensure hero has visible height on mobile */
-    .hero {
-      min-height: 55vw !important;
+    .slider-arrows {
+      padding: 0 15px !important;
     }
+    .arrow {
+      font-size: 20px !important;
+    }
+    
+    footer { flex-direction: column; align-items: center; text-align: center; gap: 25px; padding: 25px 20px; }
+    .footer-qr { margin-right: 0; }
+    .footer-col { margin-right: 0; }
+    .contact-item { justify-content: center; }
   }
 </style>
 </head>
