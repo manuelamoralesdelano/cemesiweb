@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Convenios institucionales en CEMESI. Conoce nuestras alianzas estratégicas en Providencia, Chile.">
-<meta name="keywords" content="CEMESI, convenios, alianzas, salud, Providencia, Chile, Banmédica, Fonasa, Colmena, VidaTres">
-<title>Noticias - CEMESI</title>
+<meta name="description" content="Conozca al equipo e historia detrás de CEMESI. Nuestro compromiso e innovación tecnológica en el área de diagnóstico médico.">
+<meta name="keywords" content="CEMESI, Nosotros, equipo médico, tecnología, compromiso, Dr. Bernardo Morales, salud, Providencia">
+<title>Nosotros - CEMESI</title>
 <link rel="icon" type="image/png" href="https://i.imgur.com/EDcBZn6.png">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,7 +26,6 @@
     align-items: flex-end;
     padding: 15px 40px 20px 40px;
     height: 90px;
-    flex-shrink: 0;
     position: relative;
     z-index: 10;
   }
@@ -97,34 +96,108 @@
     background-position: center;
     overflow: hidden;
     position: relative;
-    display: flex; 
+    display: flex;
     min-height: 0;
   }
   
-  .convenios-overlay {
+  .nosotros-overlay {
     flex-grow: 1;
     overflow-y: auto;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.85);
+    background-color: rgba(255, 255, 255, 0.85); 
     display: flex;
-    justify-content: flex-start; 
-    align-items: flex-start; 
+    justify-content: center; 
+    align-items: stretch; 
     padding: min(5vh, 40px) 40px 10px 40px;
+    gap: 60px; 
+  }
+  
+  /* Left Sidebar Links */
+  .nosotros-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 250px;
+    flex-shrink: 0;
+  }
+  .nosotros-sidebar a {
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+    transition: text-shadow 0.3s ease;
+  }
+  .nosotros-sidebar a:hover, 
+  .nosotros-sidebar a.selected-tab {
+    text-shadow: 0.5px 0 0 currentcolor, -0.5px 0 0 currentcolor;
   }
 
-  .noticias-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    justify-items: center;
-    max-width: 1000px;
-    width: 100%;
-    padding-bottom: 40px;
+  .nosotros-content {
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    flex-direction: column;
+    width: 500px;
+    height: 64vh; 
+    align-items: flex-start;
+    transition: opacity 0.4s ease;
+  }
+  .nosotros-content.active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  .nosotros-content div {
+    font-size: clamp(11px, 1.5vh, 15px); 
+    line-height: 1.4;
+  }
+  
+  .nosotros-content b {
+    font-size: clamp(12px, 1.6vh, 17px); 
+    display: inline-block;
+    margin-top: 10px;
+  }
+  
+  .direccion-text { font-size: clamp(15px, 1.9vh, 21px) !important; line-height: 1.4 !important; }
+  .direccion-text b { font-size: clamp(17px, 2.1vh, 24px) !important; }
+  
+  .equipo-text { font-size: clamp(16px, 1.95vh, 19.5px) !important; line-height: 1.45 !important; }
+  .equipo-text b { font-size: clamp(18px, 2.1vh, 22.1px) !important; }
+  
+  .compromiso-text { font-size: clamp(13px, 1.5vh, 15.5px) !important; line-height: 1.4 !important; }
+  .compromiso-text b { font-size: clamp(15px, 1.7vh, 17.5px) !important; }
+  
+  .tecnologia-text { font-size: clamp(12px, 1.6vh, 15.7px) !important; line-height: 1.4 !important; }
+  .tecnologia-text b { font-size: clamp(13px, 1.7vh, 17.8px) !important; display: inline-block; }
+  
+  .nosotros-content img {
+    border-radius: 4px;
+    width: 100% !important;
   }
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+  
+  .convenios-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+  .convenio-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease, filter 0.2s ease;
+    width: 120px;
+  }
+  .convenio-link:hover {
+    transform: scale(1.08);
+  }
+  .convenio-logo {
+    max-width: 100%;
+    height: auto;
+    max-height: 60px;
+    object-fit: contain;
   }
 
   /* Footer */
@@ -135,7 +208,6 @@
     background-color: #fff;
     font-size: 14px;
     line-height: 1.4;
-    flex-shrink: 0;
   }
   
   .footer-qr {
@@ -190,7 +262,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.6);
-    display: none; /* Flex when active */
+    display: none; 
     justify-content: center;
     align-items: center;
     z-index: 1000;
@@ -233,8 +305,107 @@
     width: 100%;
     height: 100%;
   }
+
+  /* Interactive Portrait Section */
+  .nosotros-right {
+    width: 380px;
+    height: 100%;
+    flex-shrink: 0;
+    position: relative;
+    display: block;
+  }
+
+  .portrait-img {
+    width: 220px;
+    height: 330px;
+    border-radius: 4px;
+    object-fit: cover;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+
+  .portrait-brief {
+    color: #000;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .portrait-full-text {
+    color: #000;
+    font-size: 13.5px;
+    line-height: 1.5;
+    text-align: justify;
+    padding-right: 15px;
+  }
+
+  @media (min-width: 901px) {
+    .nosotros-right {
+      cursor: pointer;
+    }
+    
+    .portrait-img {
+      position: absolute;
+      left: 0;
+      top: 20px;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+      z-index: 10;
+    }
+    
+    .portrait-brief {
+      position: absolute;
+      left: 235px;
+      top: 20px;
+      width: 145px;
+      height: 330px;
+      overflow: hidden;
+      transition: opacity 0.4s ease, visibility 0.4s ease;
+      opacity: 1;
+      visibility: visible;
+      z-index: 5;
+      pointer-events: none;
+      -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 95%);
+      mask-image: linear-gradient(to bottom, black 65%, transparent 95%);
+    }
+    
+    .portrait-full-text {
+      position: absolute;
+      left: -230px;
+      top: 20px;
+      width: 580px;
+      height: calc(100% - 40px);
+      overflow-y: auto;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease, visibility 0.5s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 6;
+    }
+
+    .nosotros-right.expanded .portrait-img,
+    .nosotros-right:hover .portrait-img {
+      transform: translateX(-480px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .nosotros-right.expanded .portrait-brief,
+    .nosotros-right:hover .portrait-brief {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      display: none !important;
+    }
+
+    .nosotros-right.expanded .portrait-full-text,
+    .nosotros-right:hover .portrait-full-text {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nosotros-overlay.portrait-active .nosotros-content {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+  }
   /* --- RESPONSIVE MOBILE & TABLET --- */
-  @media (max-width: 1024px) {
+  @media (max-width: 1200px) {
     body { overflow-y: auto !important; height: auto !important; max-height: none !important; }
     
     header { flex-direction: column; height: auto; padding: 20px; gap: 15px; align-items: center; }
@@ -259,21 +430,64 @@
       flex-grow: 0 !important;
       min-height: auto !important;
     }
-    .convenios-overlay {
-      padding: 30px 15px !important;
+    .nosotros-overlay {
+      flex-direction: column !important;
+      align-items: center !important;
+      padding: 30px 20px !important;
+      height: auto !important;
       overflow-y: visible !important;
-      height: auto !important;
-    }
-    
-    .noticias-grid {
-      grid-template-columns: 1fr !important;
       gap: 25px !important;
-      max-width: 100% !important;
-      padding: 0 5px 30px 5px !important;
     }
-    .noticias-grid img {
+    .nosotros-sidebar {
+      width: 100% !important;
+      border-right: none !important;
+      border-bottom: 1px solid #ccc;
+      padding-right: 0 !important;
+      padding-bottom: 15px !important;
+      margin-bottom: 10px;
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 15px;
+    }
+    .nosotros-sidebar .tab-link { display: inline-block; margin-bottom: 5px; }
+    .nosotros-sidebar a { font-size: 14px; }
+    .nosotros-content { width: 100% !important; height: auto !important; align-items: center !important; }
+    
+    .nosotros-content > div { flex-direction: column !important; height: auto !important; gap: 25px !important; margin: 0 !important; }
+    .nosotros-content > div > div { min-width: 100% !important; width: 100% !important; }
+    .nosotros-content img { max-height: 35vh !important; object-fit: contain !important; width: 100% !important; }
+    .direccion-text { text-align: center !important; }
+
+    .nosotros-right {
+      width: 100% !important;
       height: auto !important;
-      max-height: 40vh !important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      margin-top: 30px;
+      border-top: 1px solid #ccc;
+      padding-top: 30px;
+    }
+    .portrait-img {
+      width: 100% !important;
+      max-width: 250px;
+      height: auto !important;
+    }
+    .portrait-brief {
+      display: none; /* Hide brief on mobile, show full bio */
+    }
+    .portrait-full-text {
+      opacity: 1 !important;
+      visibility: visible !important;
+      width: 100% !important;
+      position: relative !important;
+      left: 0 !important;
+      top: 0 !important;
+      height: auto !important;
+      overflow-y: visible !important;
     }
     
     footer { flex-direction: column; align-items: center; text-align: center; gap: 25px; padding: 25px 20px; }
@@ -291,33 +505,44 @@
       <img src="https://i.imgur.com/7C1C5rk.png" alt="Logo CEMESI" class="logo-img" style="height: 31.5px; width: auto;">
     </a>
     <nav class="main-nav">
-        <a href="nosotros.html" data-translate="nosotros">Nosotros</a>
+        <a href="nosotros.html" class="active-link" data-translate="nosotros">Nosotros</a>
         <a href="servicios.html" data-translate="servicios">Servicios</a>
         <a href="faq.html" data-translate="faq">FAQ</a>
-        <a href="noticias.html" class="active-link" data-translate="noticias">Noticias</a>
+        <a href="noticias.html" data-translate="noticias">Noticias</a>
       </nav>
     <div class="lang-switch">
       <span id="lang-es" class="active-lang">ESP</span> / <span id="lang-en">ENG</span>
     </div>
   </header>
 
-    <main class="hero noticias-page">
-    <div class="convenios-overlay" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; overflow-y: auto; padding: min(5vh, 40px) 40px 10px 40px;">
+  <main class="hero nosotros-page">
+    <div class="nosotros-overlay">
       
-      <div class="coming-soon-card" style="background: rgba(255, 255, 255, 0.95); padding: 50px 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: center; max-width: 500px; width: 95%; animation: fadeIn 0.8s ease-out; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.8); display: flex; flex-direction: column; align-items: center;">
-        <div style="width: 80px; height: 80px; background: rgba(0, 119, 181, 0.08); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 25px;">
-          <svg aria-hidden="true" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#0077b5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10l4 4v10a2 2 0 0 1-2 2z"></path>
-            <polyline points="14 2 14 8 20 8"></polyline>
-            <line x1="16" y1="13" x2="8" y2="13"></line>
-            <line x1="16" y1="17" x2="8" y2="17"></line>
-            <polyline points="10 9 9 9 8 9"></polyline>
-          </svg>
-        </div>
-        <h1 style="font-size: 32px; font-weight: normal; color: #333; margin-bottom: 15px; letter-spacing: -0.5px;" data-translate="coming_soon_title">Prontamente</h1>
-        <p style="font-size: 16px; color: #6a6a6a; line-height: 1.6;" data-translate="coming_soon_desc">Estamos preparando novedades y noticias de interés para ti. Vuelve pronto.</p>
+      <!-- Sidebar with Links -->
+            <div class="nosotros-sidebar">
+        <a href="#" class="tab-link" data-id="porque_elegirnos"><span data-translate="tab_porque_elegirnos">Porque Elegirnos</span></a>
+        <a href="#" class="tab-link" data-id="principios_valores"><span data-translate="tab_principios_valores">Principios y valores</span></a>
+        <a href="#" class="tab-link" data-id="equipo"><span data-translate="tab_equipo">Equipo</span></a>
+        <a href="#" class="tab-link" data-id="convenios"><span data-translate="tab_convenios">Clientes y convenios</span></a>
       </div>
 
+      <!-- Main Center Content -->
+      <div class="nosotros-content" id="nosotrosContent">
+        <!-- Inner HTML will be injected here logically by JS -->
+      </div>
+
+      <!-- Right Column for Bernardo Morales -->
+      <div class="nosotros-right" id="bernardoColumn">
+        <img src="https://i.imgur.com/jNqzMGd.jpg" alt="Dr. Bernardo Morales" class="portrait-img">
+        <div class="portrait-brief" data-translate="bernardo_brief_text">
+          <!-- Populated dynamically -->
+        </div>
+        <div class="portrait-full-text" data-translate="bernardo_full_text">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      
     </div>
   </main>
   
@@ -377,32 +602,250 @@
       es: {
         servicios: "Servicios",
         nosotros: "Nosotros",
-        laboratorio: "Laboratorio",
         convenios: "Convenios",
         horarios: "Horarios",
         dias: "Lunes a Viernes",
+        tab_porque_elegirnos: "Porque Elegirnos",
+        tab_principios_valores: "Principios y Valores",
+        tab_equipo: "Equipo",
+        tab_convenios: "Clientes y convenios",
         noticias: "Noticias",
         linkedin_text: "en linkedin",
-        coming_soon_title: "Prontamente",
-        coming_soon_desc: "Estamos preparando novedades y noticias de interés para ti. Vuelve pronto.",
+        bernardo_brief_text: `<div style="font-weight: bold; font-size: 13px; line-height: 1.35; margin-bottom: 8px; color: #000;">Fundador y Director<br>Dr. Bernardo Morales Catalán</div><div style="font-style: italic; font-size: 11px; line-height: 1.35; margin-bottom: 10px; color: #555;">Estimados colegas, pacientes, gestores de salud y amigos:</div><p style="font-size: 11px; line-height: 1.45; text-align: justify; color: #222;">Quiero compartir con ustedes parte de mi trayectoria profesional y el compromiso que ha guiado mi labor médica durante todos estos años. Soy médico cirujano titulado en la Universidad de Concepción en 1987 y especialista en Anatomía Patológica por la Pontificia Universidad Católica de Chile desde 1991. A lo largo de mi carrera me he desempeñado como médico patólogo en distintas instituciones...</p>`,
+        bernardo_full_text: `<p style="margin-bottom: 12px; font-weight: bold; font-size: 15px;">Fundador y Director Dr. Bernardo Morales Catalán</p><p style="margin-bottom: 10px; font-style: italic;">Estimados colegas, pacientes, gestores de salud y amigos:</p><p style="margin-bottom: 10px;">Quiero compartir con ustedes parte de mi trayectoria profesional y el compromiso que ha guiado mi labor médica durante todos estos años.</p><p style="margin-bottom: 10px;">Soy médico cirujano titulado en la Universidad de Concepción en 1987 y especialista en Anatomía Patológica por la Pontificia Universidad Católica de Chile desde 1991. A lo largo de mi carrera me he desempeñado como médico patólogo en distintas instituciones públicas y privadas, adquiriendo una amplia experiencia diagnóstica y una sólida capacidad resolutiva en diversos niveles de complejidad.</p><p style="margin-bottom: 10px;">También he tenido la oportunidad de ejercer funciones directivas en servicios de Anatomía Patológica, direcciones hospitalarias y corporaciones de salud, experiencias que han fortalecido mi visión integral del sistema sanitario y de la gestión en salud.</p><p style="margin-bottom: 10px;">En el ámbito académico, he desarrollado una constante labor docente como profesor de Anatomía Patológica y Medicina Legal en universidades e instituciones públicas, llegando en dos oportunidades a desempeñarme como Decano de Facultades de Salud.</p><p style="margin-bottom: 10px;">Asimismo, en el área médico-legal, fui Jefe del Departamento de Tanatología del Servicio Médico Legal durante un extenso período, labor que me permitió incorporar una perspectiva pericial y forense al ejercicio de la medicina.</p><p style="margin-bottom: 10px;">Como fundador, mantengo el compromiso de aportar una mirada profesional, humana y rigurosa, orientada siempre al servicio de las personas y al fortalecimiento de la salud.</p>`
       },
       en: {
         servicios: "Services",
         nosotros: "About Us",
-        laboratorio: "Laboratory",
         convenios: "Agreements",
         horarios: "Business Hours",
         dias: "Monday to Friday",
+        tab_porque_elegirnos: "Why Choose Us",
+        tab_principios_valores: "Principles and Values",
+        tab_equipo: "Team",
+        tab_convenios: "Clients and Agreements",
         noticias: "News",
         linkedin_text: "on linkedin",
-        coming_soon_title: "Coming Soon",
-        coming_soon_desc: "We are preparing updates and interesting news for you. Please check back soon.",
+        bernardo_brief_text: `<div style="font-weight: bold; font-size: 13px; line-height: 1.35; margin-bottom: 8px; color: #000;">Founder and Director<br>Dr. Bernardo Morales Catalán</div><div style="font-style: italic; font-size: 11px; line-height: 1.35; margin-bottom: 10px; color: #555;">Dear colleagues, patients, health managers, and friends:</div><p style="font-size: 11px; line-height: 1.45; text-align: justify; color: #222;">I would like to share with you a part of my professional career and the commitment that has guided my medical work throughout all these years. I am a surgeon graduated from the University of Concepción in 1987 and a specialist in Pathological Anatomy from the Pontifical Catholic University of Chile since 1991. Throughout my career, I have served as a pathologist...</p>`,
+        bernardo_full_text: `<p style="margin-bottom: 12px; font-weight: bold; font-size: 15px;">Founder and Director Dr. Bernardo Morales Catalán</p><p style="margin-bottom: 10px; font-style: italic;">Dear colleagues, patients, health managers, and friends:</p><p style="margin-bottom: 10px;">I would like to share with you a part of my professional career and the commitment that has guided my medical work throughout all these years.</p><p style="margin-bottom: 10px;">I am a surgeon graduated from the University of Concepción in 1987 and a specialist in Pathological Anatomy from the Pontifical Catholic University of Chile since 1991. Throughout my career, I have served as a pathologist in various public and private institutions, acquiring extensive diagnostic experience and a solid analytical capacity across different levels of complexity.</p><p style="margin-bottom: 10px;">I have also had the opportunity to hold leadership roles in Pathological Anatomy departments, hospital management, and healthcare corporations—experiences that have strengthened my comprehensive vision of the sanitary system and health management.</p><p style="margin-bottom: 10px;">In the academic field, I have maintained a constant teaching role as a professor of Pathological Anatomy and Forensic Medicine in universities and public institutions, serving twice as Dean of Health Faculties.</p><p style="margin-bottom: 10px;">Likewise, in the forensic field, I was Head of the Thanatology Department at the Forensic Medical Service for an extended period, which allowed me to incorporate an expert forensic perspective into medical practice.</p><p style="margin-bottom: 10px;">As a founder, I remain committed to providing a professional, human, and rigorous perspective, always oriented toward serving people and strengthening healthcare.</p>`
+      }
+    };
+
+    const nosotrosData = {
+      porque_elegirnos: {
+        es: `
+          <div style="display: flex; flex-direction: column; gap: 15px; color: #000; justify-content: flex-start; height: 100%; padding-top: 20px;">
+            <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 14px; font-size: 16px; line-height: 1.5;">
+              <li>
+                <b style="font-weight: bold; display: block; margin-bottom: 3px;">Excelencia</b>
+                <span style="color: #333;">35 años de excelencia y precisión en diagnóstico médico.</span>
+              </li>
+              <li>
+                <b style="font-weight: bold; display: block; margin-bottom: 3px;">Innovación tecnológica</b>
+                <span style="color: #333;">Equipamiento de última generación. Analizadores automatizados y reactivos de alta calidad.</span>
+              </li>
+              <li>
+                <b style="font-weight: bold; display: block; margin-bottom: 3px;">Trazabilidad digital total</b>
+                <span style="color: #333;">Procesos eficientes con resultados oportunos.</span>
+              </li>
+              <li>
+                <b style="font-weight: bold; display: block; margin-bottom: 3px;">Cumplimiento normativo</b>
+                <span style="color: #333;">Acreditados (PEEC) Programa de Evaluación Externa de la Calidad.</span>
+              </li>
+              <li>
+                <b style="font-weight: bold; display: block; margin-bottom: 3px;">Confianza</b>
+                <span style="color: #333;">Compromiso ético con pacientes y profesionales de la salud.</span>
+              </li>
+            </ul>
+          </div>
+        `,
+        en: `
+          <div style="display: flex; flex-direction: column; gap: 15px; color: #000; justify-content: flex-start; height: 100%; padding-top: 20px;">
+            <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 14px; font-size: 16px; line-height: 1.5;">
+              <li>
+                <b style="font-weight: bold; display: block; margin-bottom: 3px;">Excellence</b>
+                <span style="color: #333;">35 years of excellence and precision in medical diagnosis.</span>
+              </li>
+              <li>
+                <b style="font-weight: bold; display: block; margin-bottom: 3px;">Technological innovation</b>
+                <span style="color: #333;">State-of-the-art equipment. Automated analyzers and high-quality reagents.</span>
+              </li>
+              <li>
+                <b style="font-weight: bold; display: block; margin-bottom: 3px;">Total digital traceability</b>
+                <span style="color: #333;">Efficient processes with timely results.</span>
+              </li>
+              <li>
+                <b style="font-weight: bold; display: block; margin-bottom: 3px;">Regulatory compliance</b>
+                <span style="color: #333;">Accredited (PEEC) External Quality Assessment Program.</span>
+              </li>
+              <li>
+                <b style="font-weight: bold; display: block; margin-bottom: 3px;">Trust</b>
+                <span style="color: #333;">Ethical commitment to patients and healthcare professionals.</span>
+              </li>
+            </ul>
+          </div>
+        `
+      },
+      principios_valores: {
+        es: `
+          <div style="display: flex; flex-direction: column; gap: 16px; color: #000; justify-content: flex-start; height: 100%; padding-top: 10px; overflow-y: auto;">
+            <div>
+              <b style="font-size: clamp(14px, 1.8vh, 17px); margin-top: 0; margin-bottom: 6px;">Misión</b>
+              <p style="font-size: clamp(12px, 1.5vh, 14.5px); line-height: 1.45; text-align: justify;">Proveer servicios integrales de anatomía patológica, patología molecular, medicina de precisión de excelencia, y criopreservación, actuando como un centro líder en diagnóstico e innovación tecnológica. Nos constituimos como una extensión clínica estratégica del Sistema de Salud chileno, integrando el conocimiento científico avanzado de nuestros profesionales con los más altos estándares de calidad y trazabilidad digital-diagnóstica total. Nuestro propósito es asociarnos estratégicamente con nuestros pacientes, garantizando la entrega de resultados de alto valor clínico, que potencien al máximo las decisiones terapéuticas oportunas, humanas y precisas, transformando la alta tecnología en una herramienta de dignidad, justicia social y equidad para cada paciente y su familia.</p>
+            </div>
+            <div>
+              <b style="font-size: clamp(14px, 1.8vh, 17px); margin-top: 8px; margin-bottom: 6px;">Visión</b>
+              <p style="font-size: clamp(12px, 1.5vh, 14.5px); line-height: 1.45; text-align: justify;">Consolidarnos como la red diagnóstica líder y el socio estratégico referente del sistema de salud chileno, reconocida por revolucionar la integración entre la medicina de vanguardia de alta complejidad y la salud pública. Aspiramos a ser la vanguardia en diagnóstico digital y medicina de precisión, donde la innovación científica y la eficiencia técnica aseguren un estándar de calidad global, garantizando que el acceso a un diagnóstico oportuno sea un derecho universal y un pilar fundamental de la salud moderna.</p>
+            </div>
+          </div>
+        `,
+        en: `
+          <div style="display: flex; flex-direction: column; gap: 16px; color: #000; justify-content: flex-start; height: 100%; padding-top: 10px; overflow-y: auto;">
+            <div>
+              <b style="font-size: clamp(14px, 1.8vh, 17px); margin-top: 0; margin-bottom: 6px;">Mission</b>
+              <p style="font-size: clamp(12px, 1.5vh, 14.5px); line-height: 1.45; text-align: justify;">Provide comprehensive services in pathological anatomy, molecular pathology, precision medicine of excellence, and cryopreservation, acting as a leading center in diagnosis and technological innovation. We constitute a strategic clinical extension of the Chilean healthcare system, integrating the advanced scientific knowledge of our professionals with the highest standards of quality and total digital-diagnostic traceability. Our purpose is to partner strategically with our patients, ensuring the delivery of results of high clinical value that maximize timely, humane, and precise therapeutic decisions, transforming high technology into a tool of dignity, social justice, and equity for each patient and their family.</p>
+            </div>
+            <div>
+              <b style="font-size: clamp(14px, 1.8vh, 17px); margin-top: 8px; margin-bottom: 6px;">Vision</b>
+              <p style="font-size: clamp(12px, 1.5vh, 14.5px); line-height: 1.45; text-align: justify;">Consolidate ourselves as the leading diagnostic network and the reference strategic partner of the Chilean healthcare system, recognized for revolutionizing the integration between high-complexity vanguard medicine and public health. We aspire to be at the forefront of digital diagnostics and precision medicine, where scientific innovation and technical efficiency ensure a global quality standard, guaranteeing that access to a timely diagnosis is a universal right and a fundamental pillar of modern health.</p>
+            </div>
+          </div>
+        `
+      },
+      equipo: {
+        es: `
+          <div style="display: flex; flex-direction: column; gap: 20px; color: #000; justify-content: flex-start; height: 100%; padding-top: 20px;">
+            <div style="font-size: 16px; line-height: 1.5; display: flex; flex-direction: column; gap: 12px;">
+              <p>
+                <b style="font-weight: bold; display: block; margin-bottom: 3px;">Director Médico</b>
+                <span style="color: #333;">Bernardo Morales Catalán</span>
+              </p>
+              <p>
+                <b style="font-weight: bold; display: block; margin-bottom: 3px;">Director Técnico</b>
+                <span style="color: #333;">Domingo Lizama</span>
+              </p>
+            </div>
+            <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 12px; font-size: 16px; line-height: 1.5; margin-top: 5px;">
+              <li>
+                <b style="font-weight: bold; display: block; margin-bottom: 3px;">Personal experto</b>
+                <span style="color: #333;">Bioquímicos, patólogos y técnicos de laboratorio.</span>
+              </li>
+              <li>
+                <b style="font-weight: bold; display: block; margin-bottom: 3px;">Equipamiento</b>
+                <span style="color: #333;">Analizadores automatizados y reactivos de alta calidad.</span>
+              </li>
+            </ul>
+          </div>
+        `,
+        en: `
+          <div style="display: flex; flex-direction: column; gap: 20px; color: #000; justify-content: flex-start; height: 100%; padding-top: 20px;">
+            <div style="font-size: 16px; line-height: 1.5; display: flex; flex-direction: column; gap: 12px;">
+              <p>
+                <b style="font-weight: bold; display: block; margin-bottom: 3px;">Medical Director</b>
+                <span style="color: #333;">Bernardo Morales Catalán</span>
+              </p>
+              <p>
+                <b style="font-weight: bold; display: block; margin-bottom: 3px;">Technical Director</b>
+                <span style="color: #333;">Domingo Lizama</span>
+              </p>
+            </div>
+            <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 12px; font-size: 16px; line-height: 1.5; margin-top: 5px;">
+              <li>
+                <b style="font-weight: bold; display: block; margin-bottom: 3px;">Expert staff</b>
+                <span style="color: #333;">Biochemists, pathologists, and laboratory technicians.</span>
+              </li>
+              <li>
+                <b style="font-weight: bold; display: block; margin-bottom: 3px;">Equipment</b>
+                <span style="color: #333;">Automated analyzers and high-quality reagents.</span>
+              </li>
+            </ul>
+          </div>
+        `
+      },
+      convenios: {
+        es: `
+          <div style="display: flex; flex-direction: column; gap: 15px; color: #000; justify-content: flex-start; height: 100%; padding-top: 15px; overflow-y: auto;">
+            <b style="font-size: 18px; margin-bottom: 5px;">Clientes y Convenios</b>
+            <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.45;">
+              <li><b>Pacientes particulares:</b> Personas que buscan chequeos preventivos o por síntomas.</li>
+              <li><b>Centros Médicos y Clínicas:</b> Profesionales que derivan a sus pacientes para diagnóstico.</li>
+              <li><b>Empresas y Aseguradoras:</b> Contratos corporativos para exámenes ocupacionales de empleados.</li>
+            </ul>
+            <p style="font-size: 15px; margin-top: 10px; margin-bottom: 5px;">Contamos con acuerdos estratégicos con diversas instituciones:</p>
+            <div class="convenios-grid">
+              <a href="#" class="convenio-link" aria-label="Banmédica">
+                <img src="https://i.imgur.com/ayFDn8l.png" class="convenio-logo" alt="Logotipo Banmédica">
+              </a>
+              <a href="#" class="convenio-link" aria-label="IntegraMédica">
+                <img src="https://i.imgur.com/T1aKwxy.png" class="convenio-logo" alt="Logotipo IntegraMédica">
+              </a>
+              <a href="#" class="convenio-link" aria-label="Fonasa">
+                <img src="https://i.imgur.com/FjfbKiX.png" class="convenio-logo" alt="Logotipo Fonasa">
+              </a>
+              <a href="#" class="convenio-link" aria-label="Consalud">
+                <img src="https://i.imgur.com/bNFSZZY.png" class="convenio-logo" alt="Logotipo Consalud">
+              </a>
+              <a href="#" class="convenio-link" aria-label="Colmena">
+                <img src="https://i.imgur.com/zeeRR4s.png" class="convenio-logo" alt="Logotipo Colmena">
+              </a>
+              <a href="#" class="convenio-link" aria-label="Nueva Masvida">
+                <img src="https://i.imgur.com/2kA7nAy.png" class="convenio-logo" alt="Logotipo Nueva Masvida">
+              </a>
+              <a href="#" class="convenio-link" aria-label="CruzBlanca">
+                <img src="https://i.imgur.com/fcbkx2B.png" class="convenio-logo" alt="Logotipo CruzBlanca">
+              </a>
+              <a href="#" class="convenio-link" aria-label="VidaTres">
+                <img src="https://i.imgur.com/v6qkzDT.png" class="convenio-logo" alt="Logotipo VidaTres">
+              </a>
+            </div>
+          </div>
+        `,
+        en: `
+          <div style="display: flex; flex-direction: column; gap: 15px; color: #000; justify-content: flex-start; height: 100%; padding-top: 15px; overflow-y: auto;">
+            <b style="font-size: 18px; margin-bottom: 5px;">Clients and Agreements</b>
+            <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.45;">
+              <li><b>Private patients:</b> Individuals seeking preventive checkups or symptom evaluation.</li>
+              <li><b>Medical Centers and Clinics:</b> Professionals who refer their patients for diagnosis.</li>
+              <li><b>Companies and Insurers:</b> Corporate contracts for employee occupational testing.</li>
+            </ul>
+            <p style="font-size: 15px; margin-top: 10px; margin-bottom: 5px;">We have strategic agreements with various institutions:</p>
+            <div class="convenios-grid">
+              <a href="#" class="convenio-link" aria-label="Banmédica">
+                <img src="https://i.imgur.com/ayFDn8l.png" class="convenio-logo" alt="Logotipo Banmédica">
+              </a>
+              <a href="#" class="convenio-link" aria-label="IntegraMédica">
+                <img src="https://i.imgur.com/T1aKwxy.png" class="convenio-logo" alt="Logotipo IntegraMédica">
+              </a>
+              <a href="#" class="convenio-link" aria-label="Fonasa">
+                <img src="https://i.imgur.com/FjfbKiX.png" class="convenio-logo" alt="Logotipo Fonasa">
+              </a>
+              <a href="#" class="convenio-link" aria-label="Consalud">
+                <img src="https://i.imgur.com/bNFSZZY.png" class="convenio-logo" alt="Logotipo Consalud">
+              </a>
+              <a href="#" class="convenio-link" aria-label="Colmena">
+                <img src="https://i.imgur.com/zeeRR4s.png" class="convenio-logo" alt="Logotipo Colmena">
+              </a>
+              <a href="#" class="convenio-link" aria-label="Nueva Masvida">
+                <img src="https://i.imgur.com/2kA7nAy.png" class="convenio-logo" alt="Logotipo Nueva Masvida">
+              </a>
+              <a href="#" class="convenio-link" aria-label="CruzBlanca">
+                <img src="https://i.imgur.com/fcbkx2B.png" class="convenio-logo" alt="Logotipo CruzBlanca">
+              </a>
+              <a href="#" class="convenio-link" aria-label="VidaTres">
+                <img src="https://i.imgur.com/v6qkzDT.png" class="convenio-logo" alt="Logotipo VidaTres">
+              </a>
+            </div>
+          </div>
+        `
       }
     };
 
     let currentLang = 'es';
+    let currentTabId = null;
+
     const btnEs = document.getElementById('lang-es');
     const btnEn = document.getElementById('lang-en');
+    const contentBox = document.getElementById('nosotrosContent');
 
     function setLang(lang) {
       currentLang = lang;
@@ -415,19 +858,68 @@
         btnEs.classList.remove('active-lang');
       }
 
+      // general DOM texts
       document.querySelectorAll('[data-translate]').forEach(el => {
         const key = el.getAttribute('data-translate');
         if (generalTranslations[lang] && generalTranslations[lang][key]) {
           el.innerHTML = generalTranslations[lang][key];
         }
       });
+
+      // Update active tab content
+      if (currentTabId && nosotrosData[currentTabId]) {
+        contentBox.innerHTML = nosotrosData[currentTabId][lang];
+        document.title = generalTranslations[lang]["tab_" + currentTabId] + " - CEMESI";
+      }
+    }
+
+    function loadTab(id) {
+      // Reset Bernardo portrait expansion when changing tabs
+      const bernardoColumn = document.getElementById('bernardoColumn');
+      const nosotrosOverlay = document.querySelector('.nosotros-overlay');
+      if (bernardoColumn && nosotrosOverlay) {
+        bernardoColumn.classList.remove('expanded');
+        nosotrosOverlay.classList.remove('portrait-active');
+      }
+
+      const data = nosotrosData[id];
+      if (!data) return;
+
+      currentTabId = id;
+
+      document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('selected-tab'));
+      const activeLink = document.querySelector(`[data-id="${id}"]`);
+      if(activeLink) activeLink.classList.add('selected-tab');
+
+      contentBox.innerHTML = data[currentLang];
+      contentBox.classList.add('active');
+
+      const url = new URL(window.location);
+      url.searchParams.set('seccion', id);
+      window.history.pushState({}, '', url);
+
+      document.title = generalTranslations[currentLang]["tab_" + id] + " - CEMESI";
     }
 
     document.addEventListener('DOMContentLoaded', () => {
       btnEs.addEventListener('click', () => setLang('es'));
       btnEn.addEventListener('click', () => setLang('en'));
 
-      // Map behavior (mirroring index)
+      document.querySelectorAll('.tab-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          loadTab(link.getAttribute('data-id'));
+        });
+      });
+
+      const urlParams = new URLSearchParams(window.location.search);
+      let initTab = urlParams.get('seccion');
+      if (!initTab || !nosotrosData[initTab]) {
+        initTab = 'porque_elegirnos';
+      }
+      loadTab(initTab);
+
+      // Map Modal mirror logic
       const addressLink = document.getElementById('address-link');
       const mapModal = document.getElementById('mapModal');
       const closeMap = document.getElementById('closeMap');
@@ -459,16 +951,59 @@
         }
       });
 
-      // Handle video click replacement and play
-      const videoContainer = document.getElementById('videoContainer');
-      if (videoContainer) {
-        videoContainer.addEventListener('click', () => {
-          videoContainer.innerHTML = `<iframe src="https://www.youtube.com/embed/v16X96c_t5w?autoplay=1&rel=0" title="Mayo Clinic Laboratories Facility Tour" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>`;
+      // Bernardo column interactivity
+      const bernardoColumn = document.getElementById('bernardoColumn');
+      const nosotrosOverlay = document.querySelector('.nosotros-overlay');
+      
+      if (bernardoColumn && nosotrosOverlay) {
+        // Toggle on click, ignoring clicks inside full text to allow scrolling/reading
+        bernardoColumn.addEventListener('click', (e) => {
+          if (e.target.closest('.portrait-full-text')) {
+            return;
+          }
+          const isExpanded = bernardoColumn.classList.contains('expanded');
+          if (isExpanded) {
+            bernardoColumn.classList.remove('expanded');
+            nosotrosOverlay.classList.remove('portrait-active');
+          } else {
+            bernardoColumn.classList.add('expanded');
+            nosotrosOverlay.classList.add('portrait-active');
+          }
+        });
+
+        // Hover handlers (as fallback to keep UX snappy)
+        bernardoColumn.addEventListener('mouseenter', () => {
+          if (!bernardoColumn.classList.contains('expanded')) {
+            nosotrosOverlay.classList.add('portrait-active');
+          }
+        });
+
+        bernardoColumn.addEventListener('mouseleave', () => {
+          if (!bernardoColumn.classList.contains('expanded')) {
+            nosotrosOverlay.classList.remove('portrait-active');
+          }
+        });
+
+        // Close when clicking outside of the biography column
+        document.addEventListener('click', (e) => {
+          if (bernardoColumn.classList.contains('expanded') && !bernardoColumn.contains(e.target)) {
+            bernardoColumn.classList.remove('expanded');
+            nosotrosOverlay.classList.remove('portrait-active');
+          }
         });
       }
 
       // Initialize language
       setLang('es');
+    });
+
+    window.addEventListener('popstate', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      let id = urlParams.get('seccion');
+      if (!id || !nosotrosData[id]) {
+        id = 'direccion';
+      }
+      loadTab(id);
     });
   </script>
 
