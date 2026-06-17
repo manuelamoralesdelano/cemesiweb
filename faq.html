@@ -111,33 +111,89 @@
     padding: min(5vh, 40px) 40px 10px 40px;
   }
 
-  .convenios-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 70px 90px;
-    max-width: 1100px;
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 30px;
     width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: start;
     animation: fadeIn 0.8s ease forwards;
   }
 
-  .convenio-link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.2s ease, filter 0.2s ease;
-    width: 250px;
-  }
-  
-  .convenio-link:hover {
-    transform: scale(1.08);
+  .faq-item {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
   }
 
-  .convenio-logo {
-    max-width: 100%;
-    height: auto;
-    max-height: 80px;
-    object-fit: contain;
+  .faq-item:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+    border-color: #2b7dbe;
+  }
+
+  .faq-item.active {
+    border-color: #2b7dbe;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+  }
+
+  .faq-question-header {
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    background-color: #fafafa;
+    transition: background-color 0.2s ease;
+  }
+
+  .faq-question-header:hover {
+    background-color: #f0f7ff;
+  }
+
+  .faq-question-header b {
+    font-size: 15px;
+    color: #2c3e50;
+    line-height: 1.4;
+    padding-right: 15px;
+  }
+
+  .faq-icon {
+    font-size: 18px;
+    color: #2b7dbe;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .faq-item.active .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.3s ease;
+    background-color: #ffffff;
+    padding: 0 20px;
+  }
+
+  .faq-item.active .faq-answer {
+    max-height: 500px;
+    padding: 16px 20px;
+    border-top: 1px solid #e8eff7;
+  }
+
+  .faq-answer p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
   }
 
   @keyframes fadeIn {
@@ -253,32 +309,50 @@
   }
   /* --- RESPONSIVE MOBILE & TABLET --- */
   @media (max-width: 1024px) {
-    body { overflow-y: auto !important; }
+    body { overflow-y: auto !important; height: auto !important; max-height: none !important; }
     
-    header { flex-direction: column; height: auto; padding: 20px; gap: 20px; align-items: center; }
+    header { flex-direction: column; height: auto; padding: 20px; gap: 15px; align-items: center; position: relative; z-index: 10; }
     
     nav.main-nav {
-      flex-grow: 1;
+      flex-grow: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       position: relative;
       top: 0;
       flex-wrap: wrap;
-      gap: 15px 25px;
+      gap: 12px 20px;
     }
+    nav.main-nav a { font-size: 15px; }
     .lang-switch { align-self: center; top: 0; margin-top: 5px; }
     
-    footer { flex-direction: column; align-items: center; text-align: center; gap: 30px; padding: 30px 20px; }
+    .hero {
+      overflow: visible !important;
+      height: auto !important;
+      max-height: none !important;
+      flex-grow: 0 !important;
+      min-height: auto !important;
+    }
+    .convenios-overlay {
+      padding: 30px 20px !important;
+      overflow-y: visible !important;
+      height: auto !important;
+    }
+    .faq-container {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0 5px !important;
+    }
+    .faq-grid {
+      grid-template-columns: 1fr !important;
+      gap: 15px !important;
+    }
+    
+    footer { flex-direction: column; align-items: center; text-align: center; gap: 25px; padding: 25px 20px; }
     .footer-qr { margin-right: 0; }
     .footer-col { margin-right: 0; }
     .contact-item { justify-content: center; }
-
     .modal-content { width: 95%; height: 60%; }
-    
-    .convenios-overlay { padding: 40px 20px !important; }
-    .convenios-grid { gap: 30px !important; justify-content: center !important; display: flex !important; flex-wrap: wrap !important; }
-    .convenio-link { width: 40% !important; min-width: 130px; }
   }
 </style>
 </head>
@@ -297,40 +371,126 @@
     <div class="lang-switch">
       <span id="lang-es" class="active-lang">ESP</span> / <span id="lang-en">ENG</span>
     </div>
-  </header>
-
-    <main class="hero faq-page">
+  </header>    <main class="hero faq-page">
     <div class="convenios-overlay" style="display: flex; flex-direction: column; align-items: center; width: 100%; overflow-y: auto; padding-bottom: 40px; justify-content: flex-start;">
-      <div class="faq-container" style="width: 100%; max-width: 800px; text-align: left; color: #000; font-size: 15px; line-height: 1.5;">
-        <b data-translate="q1">1.Cómo puedo contactarme con ustedes?</b>
-        <p style="margin-bottom: 15px;" data-translate="a1">Nos puedes contactar personalmente en nuestra punto de atención en<br>Guardia Vieja 339 Providencia.<br>También nos puedes escribir al whatsApp +56952173608 o llamarnos al +56 222 07 58 95<br>Nuestro correo electrónico es secretaria@cemesi.cl</p>
-        
-        <b data-translate="q2">2.Cuál es el horario de atención?</b>
-        <p style="margin-bottom: 15px;" data-translate="a2">De 9 a 18hrs.</p>
-        
-        <b data-translate="q3">3.Qué tipos de servicios están disponibles?</b>
-        <p style="margin-bottom: 15px;" data-translate="a3">Laboratorio de anatomía patológica, laboratorio biotecnológico para aplicaciones biomédicas en terapia celular, molecular y laboratorio de criopreservación.</p>
-        
-        <b data-translate="q4">4.Cuánto tiempo se tardan los resultados de los exámenes?</b>
-        <p style="margin-bottom: 15px;" data-translate="a4">Los resultados en examenes rutinarios biopsias, en promedio demoran entre 3 a 5 días desde su ingreso al laboratorio, si requiere de exámenes especiales o más específicos puede demorar hasta 15 días, esto es informado a cada paciente. En el caso de la citología de cualquier tipo nuestro promedio de tiempo de análisis es de 3 días desde el ingreso de las muestras.</p>
-        
-        <b data-translate="q5">5.Realizan toma de muestras?</b>
-        <p style="margin-bottom: 15px;" data-translate="a5">Contamos en nuestro laboratorio con un pabellón de cirugía menor, donde su médico tratante puede acceder a tomar las muestras.</p>
-        
-        <b data-translate="q6">6.Cuáles son los medios de pago?</b>
-        <p style="margin-bottom: 15px;" data-translate="a6">Para su facilidad son aceptados todos los medios de pago existentes: Efectivo, transferencias, bonos, tarjetas de crédito, cheques.</p>
-        
-        <b data-translate="q7">7.Tienen convenio de ventas con Isapres o Fonasa?</b>
-        <p style="margin-bottom: 15px;" data-translate="a7">Para exámenes de laboratorio de histopatología contamos con convenio con todas las Isapres y Fonasa. Para criopreservación de espermios contamos con convenio con cruz Blanca y Consalud a través de Oncored.</p>
-        
-        <b data-translate="q8">8.Cómo recibiré el resultado de mi examen?</b>
-        <p style="margin-bottom: 15px;" data-translate="a8">Los resultados de exámenes, se envían al centro clínico que lo solicitó y si se trata de un paciente particular, usted debe venir a retirar su examen en nuestras instalaciones o puede solicitar que se le remita a su correo electrónico, indicando su cédula de identidad.</p>
-        
-        <b data-translate="q9">9.Si mi médico solicita los tacos o placas de un examen que ya me realicé, ¿qué tengo que hacer para obtenerlo?</b>
-        <p style="margin-bottom: 15px;" data-translate="a9">Aunque su material biológico le pertenece, para retirarlo, usted debe contar con la orden de su médico tratante, pues este material debe ser resguardado por el laboratorio que emite su informe por normativa de la ley.<br>En caso de retiro contando con la orden médica, usted debe presentarse personalmente o un tercero a través de un poder simple.<br>En el laboratorio deberá firmar documentación de retiro de dicha muestra y compromiso de devolución (reintegración de material) para el resguardo legal ya mencionado. Para la reintegración de material usted deberá traer una copia del nuevo informe o análisis realizado.</p>
-        
-        <b data-translate="q10">10.Si usted tiene una consulta distinta, por favor realizar a través de este acceso.</b>
-        <p style="margin-bottom: 15px;" data-translate="a10">Correo: secretaria@cemesi.cl<br>Whatsapp: +56952173608</p>
+      <div class="faq-container" style="width: 100%; max-width: 1000px; text-align: left; color: #000; font-size: 15px; line-height: 1.5; padding: 0 10px;">
+        <div class="faq-grid">
+          <!-- Column 1 (Odd items) -->
+          <div class="faq-column" style="display: flex; flex-direction: column; gap: 20px;">
+            <!-- Item 1 -->
+            <div class="faq-item">
+              <div class="faq-question-header" onclick="toggleFaq(this)">
+                <b data-translate="q1">Cómo puedo contactarme con ustedes?</b>
+                <span class="faq-icon">+</span>
+              </div>
+              <div class="faq-answer">
+                <p data-translate="a1">Nos puedes contactar personalmente en nuestra punto de atención en<br>Guardia Vieja 339 Providencia.<br>También nos puedes escribir al whatsApp +56952173608 o llamarnos al +56 222 07 58 95<br>Nuestro correo electrónico es secretaria@cemesi.cl</p>
+              </div>
+            </div>
+            
+            <!-- Item 3 -->
+            <div class="faq-item">
+              <div class="faq-question-header" onclick="toggleFaq(this)">
+                <b data-translate="q3">Qué tipos de servicios están disponibles?</b>
+                <span class="faq-icon">+</span>
+              </div>
+              <div class="faq-answer">
+                <p data-translate="a3">Laboratorio de anatomía patológica, laboratorio biotecnológico para aplicaciones biomédicas en terapia celular, molecular y laboratorio de criopreservación.</p>
+              </div>
+            </div>
+            
+            <!-- Item 5 -->
+            <div class="faq-item">
+              <div class="faq-question-header" onclick="toggleFaq(this)">
+                <b data-translate="q5">Realizan toma de muestras?</b>
+                <span class="faq-icon">+</span>
+              </div>
+              <div class="faq-answer">
+                <p data-translate="a5">Contamos en nuestro laboratorio con un pabellón de cirugía menor, donde su médico tratante puede acceder a tomar las muestras.</p>
+              </div>
+            </div>
+            
+            <!-- Item 7 -->
+            <div class="faq-item">
+              <div class="faq-question-header" onclick="toggleFaq(this)">
+                <b data-translate="q7">Tienen convenio de ventas con Isapres o Fonasa?</b>
+                <span class="faq-icon">+</span>
+              </div>
+              <div class="faq-answer">
+                <p data-translate="a7">Para exámenes de laboratorio de histopatología contamos con convenio con todas las Isapres y Fonasa. Para criopreservación de espermios contamos con convenio con cruz Blanca y Consalud a través de Oncored.</p>
+              </div>
+            </div>
+            
+            <!-- Item 9 -->
+            <div class="faq-item">
+              <div class="faq-question-header" onclick="toggleFaq(this)">
+                <b data-translate="q9">Si mi médico solicita los tacos o placas de un examen que ya me realicé, ¿qué tengo que hacer para obtenerlo?</b>
+                <span class="faq-icon">+</span>
+              </div>
+              <div class="faq-answer">
+                <p data-translate="a9">Aunque su material biológico le pertenece, para retirarlo, usted debe contar con la orden de su médico tratante, pues este material debe ser resguardado por el laboratorio que emite su informe por normativa de la ley.<br>En caso de retiro contando con la orden médica, usted debe presentarse personalmente o un tercero a través de un poder simple.<br>En el laboratorio deberá firmar documentación de retiro de dicha muestra y compromiso de devolución (reintegración de material) para el resguardo legal ya mencionado. Para la reintegración de material usted deberá traer una copia del nuevo informe o análisis realizado.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2 (Even items) -->
+          <div class="faq-column" style="display: flex; flex-direction: column; gap: 20px;">
+            <!-- Item 2 -->
+            <div class="faq-item">
+              <div class="faq-question-header" onclick="toggleFaq(this)">
+                <b data-translate="q2">Cuál es el horario de atención?</b>
+                <span class="faq-icon">+</span>
+              </div>
+              <div class="faq-answer">
+                <p data-translate="a2">De 9 a 18hrs.</p>
+              </div>
+            </div>
+            
+            <!-- Item 4 -->
+            <div class="faq-item">
+              <div class="faq-question-header" onclick="toggleFaq(this)">
+                <b data-translate="q4">Cuánto tiempo se tardan los resultados de los exámenes?</b>
+                <span class="faq-icon">+</span>
+              </div>
+              <div class="faq-answer">
+                <p data-translate="a4">Los resultados en examenes rutinarios biopsias, en promedio demoran entre 3 a 5 días desde su ingreso al laboratorio, si requiere de exámenes especiales o más específicos puede demorar hasta 15 días, esto es informado a cada paciente. En el caso de la citología de cualquier tipo nuestro promedio de tiempo de análisis es de 3 días desde el ingreso de las muestras.</p>
+              </div>
+            </div>
+            
+            <!-- Item 6 -->
+            <div class="faq-item">
+              <div class="faq-question-header" onclick="toggleFaq(this)">
+                <b data-translate="q6">Cuáles son los medios de pago?</b>
+                <span class="faq-icon">+</span>
+              </div>
+              <div class="faq-answer">
+                <p data-translate="a6">Para su facilidad son aceptados todos los medios de pago existentes: Efectivo, transferencias, bonos, tarjetas de crédito, cheques.</p>
+              </div>
+            </div>
+            
+            <!-- Item 8 -->
+            <div class="faq-item">
+              <div class="faq-question-header" onclick="toggleFaq(this)">
+                <b data-translate="q8">Cómo recibiré el resultado de mi examen?</b>
+                <span class="faq-icon">+</span>
+              </div>
+              <div class="faq-answer">
+                <p data-translate="a8">Los resultados de exámenes, se envían al centro clínico que lo solicitó y si se trata de un paciente particular, usted debe venir a retirar su examen en nuestras instalaciones o puede solicitar que se le remita a su correo electrónico, indicando su cédula de identidad.</p>
+              </div>
+            </div>
+            
+            <!-- Item 10 -->
+            <div class="faq-item">
+              <div class="faq-question-header" onclick="toggleFaq(this)">
+                <b data-translate="q10">Si usted tiene una consulta distinta, por favor realizar a través de este acceso.</b>
+                <span class="faq-icon">+</span>
+              </div>
+              <div class="faq-answer">
+                <p data-translate="a10">Correo: secretaria@cemesi.cl<br>Whatsapp: +56952173608</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </main>
@@ -387,6 +547,11 @@
   </div>
 
   <script>
+    function toggleFaq(header) {
+      const item = header.parentElement;
+      item.classList.toggle('active');
+    }
+
     const generalTranslations = {
       es: {
         servicios: "Servicios",
@@ -398,25 +563,25 @@
         noticias: "Noticias",
         linkedin_text: "en linkedin",
         faq_title: "Preguntas Frecuentes",
-        q1: "1.Cómo puedo contactarme con ustedes?",
+        q1: "Cómo puedo contactarme con ustedes?",
         a1: "Nos puedes contactar personalmente en nuestra punto de atención en<br>Guardia Vieja 339 Providencia.<br>También nos puedes escribir al whatsApp +56952173608 o llamarnos al +56 222 07 58 95<br>Nuestro correo electrónico es secretaria@cemesi.cl",
-        q2: "2.Cuál es el horario de atención?",
+        q2: "Cuál es el horario de atención?",
         a2: "De 9 a 18hrs.",
-        q3: "3.Qué tipos de servicios están disponibles?",
+        q3: "Qué tipos de servicios están disponibles?",
         a3: "Laboratorio de anatomía patológica, laboratorio biotecnológico para aplicaciones biomédicas en terapia celular, molecular y laboratorio de criopreservación.",
-        q4: "4.Cuánto tiempo se tardan los resultados de los exámenes?",
+        q4: "Cuánto tiempo se tardan los resultados de los exámenes?",
         a4: "Los resultados en examenes rutinarios biopsias, en promedio demoran entre 3 a 5 días desde su ingreso al laboratorio, si requiere de exámenes especiales o más específicos puede demorar hasta 15 días, esto es informado a cada paciente. En el caso de la citología de cualquier tipo nuestro promedio de tiempo de análisis es de 3 días desde el ingreso de las muestras.",
-        q5: "5.Realizan toma de muestras?",
+        q5: "Realizan toma de muestras?",
         a5: "Contamos en nuestro laboratorio con un pabellón de cirugía menor, donde su médico tratante puede acceder a tomar las muestras.",
-        q6: "6.Cuáles son los medios de pago?",
+        q6: "Cuáles son los medios de pago?",
         a6: "Para su facilidad son aceptados todos los medios de pago existentes:<br>Efectivo, transferencias, bonos, tarjetas de crédito, cheques.",
-        q7: "7.Tienen convenio de ventas con Isapres o Fonasa?",
+        q7: "Tienen convenio de ventas con Isapres o Fonasa?",
         a7: "Para exámenes de laboratorio de histopatología contamos con convenio con todas las Isapres y Fonasa. Para criopreservación de espermios contamos con convenio con cruz Blanca y Consalud a través de Oncored.",
-        q8: "8.Cómo recibiré el resultado de mi examen?",
+        q8: "Cómo recibiré el resultado de mi examen?",
         a8: "Los resultados de exámenes, se envían al centro clínico que lo solicitó y si se trata de un paciente particular, usted debe venir a retirar su examen en nuestras instalaciones o puede solicitar que se le remita a su correo electrónico, indicando su cédula de identidad.",
-        q9: "9.Si mi médico solicita los tacos o placas de un examen que ya me realicé, ¿qué tengo que hacer para obtenerlo?",
+        q9: "Si mi médico solicita los tacos o placas de un examen que ya me realicé, ¿qué tengo que hacer para obtenerlo?",
         a9: "Aunque su material biológico le pertenece, para retirarlo, usted debe contar con la orden de su médico tratante, pues este material debe ser resguardado por el laboratorio que emite su informe por normativa de la ley.<br>En caso de retiro contando con la orden médica, usted debe presentarse personalmente o un tercero a través de un poder simple.<br>En el laboratorio deberá firmar documentación de retiro de dicha muestra y compromiso de devolución (reintegración de material) para el resguardo legal ya mencionado. Para la reintegración de material usted deberá traer una copia del nuevo informe o análisis realizado.",
-        q10: "10.Si usted tiene una consulta distinta, por favor realizar a través de este acceso.",
+        q10: "Si usted tiene una consulta distinta, por favor realizar a través de este acceso.",
         a10: "Correo: secretaria@cemesi.cl<br>Whatsapp: +56952173608"
       },
       en: {
@@ -429,25 +594,25 @@
         noticias: "News",
         linkedin_text: "on linkedin",
         faq_title: "Frequently Asked Questions",
-        q1: "1. How can I contact you?",
+        q1: "How can I contact you?",
         a1: "You can contact us in person at our service point at<br>Guardia Vieja 339, Providencia.<br>You can also write to us via WhatsApp at +56952173608 or call us at +56 222 07 58 95.<br>Our email address is secretaria@cemesi.cl",
-        q2: "2. What are the business hours?",
+        q2: "What are the business hours?",
         a2: "From 9:00 AM to 6:00 PM.",
-        q3: "3. What types of services are available?",
+        q3: "What types of services are available?",
         a3: "Pathological anatomy laboratory, biotechnological laboratory for biomedical applications in cellular and molecular therapy, and cryopreservation laboratory.",
-        q4: "4. How long do exam results take?",
+        q4: "How long do exam results take?",
         a4: "Results for routine exams/biopsies average between 3 to 5 days from their entry into the laboratory. If special or more specific testing is required, it can take up to 15 days, which is communicated to each patient. For cytology of any kind, our average analysis time is 3 days from sample entry.",
-        q5: "5. Do you perform sample collection?",
+        q5: "Do you perform sample collection?",
         a5: "Our laboratory features a minor surgery unit where your treating physician can perform the sample collection.",
-        q6: "6. What are the accepted payment methods?",
+        q6: "What are the accepted payment methods?",
         a6: "For your convenience, all existing payment methods are accepted:<br>Cash, bank transfers, health vouchers (bonos), credit cards, and checks.",
-        q7: "7. Do you have sales agreements with Isapres or Fonasa?",
+        q7: "Do you have sales agreements with Isapres or Fonasa?",
         a7: "For histopathology laboratory tests, we have agreements with all Isapres and Fonasa. For sperm cryopreservation, we have an agreement with Cruz Blanca and Consalud through Oncored.",
-        q8: "8. How will I receive my exam results?",
+        q8: "How will I receive my exam results?",
         a8: "Exam results are sent directly to the clinical center that requested them. If you are a private patient, you must pick up your results in person at our facilities or request them to be emailed to you by providing your ID number.",
-        q9: "9. If my doctor requests the blocks or slides of a previous exam, what do I need to do to get them?",
+        q9: "If my doctor requests the blocks or slides of a previous exam, what do I need to do to get them?",
         a9: "Although your biological material belongs to you, to retrieve it you must have an order from your treating physician, as this material must legally be safeguarded by the issuing laboratory.<br>In case of retrieval with a medical order, you must appear in person or authorize a third party via a simple power of attorney.<br>At the laboratory, you must sign a retrieval document and a commitment to return the material (reintegration) for the aforementioned legal safeguarding. To return the material, you must bring a copy of the new report or analysis performed.",
-        q10: "10. If you have a different inquiry, please contact us through these channels.",
+        q10: "If you have a different inquiry, please contact us through these channels.",
         a10: "Email: secretaria@cemesi.cl<br>WhatsApp: +56952173608"
       }
     };
